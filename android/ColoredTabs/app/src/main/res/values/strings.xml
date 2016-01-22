@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ColoredTabs</string>
+
+    <string name="tabA">Stories</string>
+    <string name="tabB">Photos</string>
+    <string name="tabC">Sharing</string>
+
+</resources>
