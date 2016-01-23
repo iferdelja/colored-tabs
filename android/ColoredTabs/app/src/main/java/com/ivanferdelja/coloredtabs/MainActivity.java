@@ -1,5 +1,6 @@
 package com.ivanferdelja.coloredtabs;
 
+import android.animation.ArgbEvaluator;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -35,16 +36,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 if (getString(R.string.tabA).equals(tab.getText())) {
-                    tabLayout.setBackgroundColor(getColor(R.color.colorA));
-                    tabLayout.getRootView().setBackgroundColor(getColor(R.color.colorA));
                     viewPager.setCurrentItem(0);
                 } else if (getString(R.string.tabB).equals(tab.getText())) {
-                    tabLayout.setBackgroundColor(getColor(R.color.colorB));
-                    tabLayout.getRootView().setBackgroundColor(getColor(R.color.colorB));
                     viewPager.setCurrentItem(1);
                 } else if (getString(R.string.tabC).equals(tab.getText())) {
-                    tabLayout.setBackgroundColor(getColor(R.color.colorC));
-                    tabLayout.getRootView().setBackgroundColor(getColor(R.color.colorC));
                     viewPager.setCurrentItem(2);
                 }
             }
@@ -84,37 +79,53 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-//        ObjectAnimator objectAnimator = ObjectAnimator.ofArgb(tabLayout.getRootView(), "backgroundColor",
-//                getColor(R.color.));
+        viewPager.addOnPageChangeListener(new PageChangeListener(tabLayout));
+    }
 
-        final float lastPositionOffset = 0;
-        boolean movingLeft = false;
+    private class PageChangeListener implements ViewPager.OnPageChangeListener {
 
-        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                Log.d("ColoredTab", position + " " + positionOffset + " " + positionOffsetPixels);
+        private TabLayout tabLayout;
+        ArgbEvaluator evaluator;
 
+        public PageChangeListener(TabLayout tabLayout) {
+            this.tabLayout = tabLayout;
+            evaluator = new ArgbEvaluator();
+        }
 
-                lastPositionOffset = positionOffset;
+        @Override
+        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            int startColor;
+            int endColor;
+
+            if (position == 0) {
+                startColor = getColor(R.color.colorA);
+                endColor = getColor(R.color.colorB);
+            } else if (position == 2) {
+                startColor = endColor = getColor(R.color.colorC);
+            } else {
+                startColor = getColor(R.color.colorB);
+                endColor = getColor(R.color.colorC);
             }
 
-            @Override
-            public void onPageSelected(int position) {
-                Log.d("ColoredTab", "pageSelected " + position);
-                TabLayout.Tab tab = tabLayout.getTabAt(position);
-                if (tab != null) {
-                    tab.select();
-                }
+            int color = (int) evaluator.evaluate(positionOffset, startColor, endColor);
+            tabLayout.getRootView().setBackgroundColor(color);
+            tabLayout.setBackgroundColor(color);
+            getWindow().setStatusBarColor(color);
+        }
+
+        @Override
+        public void onPageSelected(int position) {
+            TabLayout.Tab tab = tabLayout.getTabAt(position);
+            if (tab != null) {
+                tab.select();
             }
+        }
 
-            @Override
-            public void onPageScrollStateChanged(int state) {
+        @Override
+        public void onPageScrollStateChanged(int state) {
 
-            }
-        });
-
-
+        }
     }
 
     public static class StoryFragment extends Fragment {
