@@ -1,17 +1,15 @@
 <GridView
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/grid"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:numColumns="3"
-    android:verticalSpacing="3dp"
-    android:horizontalSpacing="3dp"
-    android:stretchMode="columnWidth"
     android:gravity="center"
-    android:paddingLeft="10dp"
-    android:paddingRight="10dp"
-    android:paddingTop="10dp"
+    android:horizontalSpacing="3dp"
+    android:numColumns="3"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:stretchMode="columnWidth"
+    android:verticalSpacing="3dp"
 
     >
 
