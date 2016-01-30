@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,8 +28,8 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tabC)));
         tabLayout.setSelectedTabIndicatorHeight(0);
 
-
-        tabLayout.getRootView().setBackgroundColor(getColor(R.color.colorA));
+        tabLayout.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+        getWindow().setStatusBarColor(getColor(android.R.color.transparent));
 
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -110,8 +109,6 @@ public class MainActivity extends AppCompatActivity {
 
             int color = (int) evaluator.evaluate(positionOffset, startColor, endColor);
             tabLayout.getRootView().setBackgroundColor(color);
-            tabLayout.setBackgroundColor(color);
-            getWindow().setStatusBarColor(color);
         }
 
         @Override
