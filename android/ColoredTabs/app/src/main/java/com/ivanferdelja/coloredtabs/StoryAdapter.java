@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class StoryAdapter extends ArrayAdapter<Story> {
 
@@ -23,6 +24,8 @@ public class StoryAdapter extends ArrayAdapter<Story> {
 
         ImageView storyImage = (ImageView) storyView.findViewById(R.id.image);
         storyImage.setImageResource(story.imageResource);
+        TextView headline = (TextView) storyView.findViewById(R.id.headline);
+        headline.setText(story.headline);
         return storyView;
     }
 }

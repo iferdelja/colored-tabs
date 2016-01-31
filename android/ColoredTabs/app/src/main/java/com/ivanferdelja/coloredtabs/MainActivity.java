@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                     case 0:
                         StoryFragment fragment = new StoryFragment();
                         StoryAdapter adapter = new StoryAdapter(getApplicationContext(), 0);
-                        adapter.add(Story.create(R.drawable.story1, "Story description"));
+                        adapter.add(Story.create(R.drawable.story1, "Story description", "Visiting New York City: 5 Insider Tips"));
 
                         fragment.setListAdapter(adapter);
                         return fragment;

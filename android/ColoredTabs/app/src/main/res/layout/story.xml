@@ -19,7 +19,14 @@
         android:scaleType="centerCrop"
         android:src="@drawable/story1"/>
 
+    <TextView
+        android:id="@+id/headline"
+        style="@style/StoryOverlay"
+        android:text="Suggested story"
+        android:layout_above="@+id/actions"/>
+
     <LinearLayout
+        android:id="@+id/actions"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_below="@id/image"
