@@ -4,7 +4,5 @@
           android:layout_height="match_parent"
           android:layout_weight="1"
           android:drawSelectorOnTop="false"
-          android:padding="10dp"
-          android:dividerHeight="20dp"
           android:divider="@android:color/transparent"
     />

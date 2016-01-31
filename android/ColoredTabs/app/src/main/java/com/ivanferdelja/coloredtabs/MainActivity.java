@@ -122,6 +122,7 @@ public class MainActivity extends AppCompatActivity {
 
             int color = (int) evaluator.evaluate(positionOffset, startColor, endColor);
             tabLayout.getRootView().setBackgroundColor(color);
+            tabLayout.setBackgroundColor(color);
         }
 
         @Override
