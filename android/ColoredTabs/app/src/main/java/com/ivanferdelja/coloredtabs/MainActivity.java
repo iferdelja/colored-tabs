@@ -91,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
 
         storyAdapter.add(Story.create(R.drawable.story1, "Visiting New York City: 5 Insider Tips"));
         storyAdapter.add(Story.create(R.drawable.story2, "How To Get Five Planets Into a Single Photograph"));
+        storyAdapter.add(Story.create(R.drawable.story3, "Deforestation Threatens Pygmies, Study Finds"));
     }
 
     private class PageChangeListener implements ViewPager.OnPageChangeListener {

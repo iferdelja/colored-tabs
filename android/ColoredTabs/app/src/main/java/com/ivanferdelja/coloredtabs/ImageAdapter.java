@@ -32,11 +32,17 @@ public class ImageAdapter extends BaseAdapter {
             imageView = new ImageView(mContext);
             imageView.setAdjustViewBounds(true);
             imageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+            int imageResource = R.drawable.dog;
+            if (position % 2 == 0) {
+                imageResource = R.drawable.dog2;
+            } else if (position % 3 == 0) {
+                imageResource = R.drawable.dog3;
+            }
+            imageView.setImageResource(imageResource);
         } else {
             imageView = (ImageView) convertView;
         }
 
-        imageView.setImageResource(R.drawable.dog);
         return imageView;
     }
 }
