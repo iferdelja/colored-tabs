@@ -1,6 +1,7 @@
 package com.ivanferdelja.coloredtabs;
 
 import android.animation.ArgbEvaluator;
+import android.app.ListFragment;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -61,7 +62,11 @@ public class MainActivity extends AppCompatActivity {
             public Fragment getItem(int position) {
                 switch (position) {
                     case 0:
-                        return new StoryFragment();
+                        android.support.v4.app.ListFragment fragment = new android.support.v4.app.ListFragment();
+                        StoryAdapter adapter = new StoryAdapter(getApplicationContext(), 0);
+                        adapter.add(Story.create(R.drawable.story1, "Story description"));
+                        fragment.setListAdapter(adapter);
+                        return fragment;
                     case 1:
                         return new PhotoFragment();
                     case 2:
@@ -125,11 +130,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public static class StoryFragment extends Fragment {
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-            return inflater.inflate(R.layout.fragment_stories, container, false);
-        }
+    public static class StoryFragment extends android.support.v4.app.ListFragment {
+//        @Override
+//        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+//            return inflater.inflate(R.layout.fragment_stories, container, false);
+//        }
     }
 
     public static class PhotoFragment extends Fragment {
