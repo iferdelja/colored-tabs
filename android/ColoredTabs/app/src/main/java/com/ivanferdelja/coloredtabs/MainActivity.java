@@ -1,7 +1,6 @@
 package com.ivanferdelja.coloredtabs;
 
 import android.animation.ArgbEvaluator;
-import android.app.ListFragment;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -14,6 +13,8 @@ import android.view.ViewGroup;
 import android.widget.GridView;
 
 public class MainActivity extends AppCompatActivity {
+
+    StoryAdapter storyAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,17 +57,14 @@ public class MainActivity extends AppCompatActivity {
         });
         tabLayout.setTabTextColors(getColorStateList(R.color.tab_color));
 
-
+        storyAdapter = new StoryAdapter(getApplicationContext(), 0);
         viewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
             public Fragment getItem(int position) {
                 switch (position) {
                     case 0:
                         StoryFragment fragment = new StoryFragment();
-                        StoryAdapter adapter = new StoryAdapter(getApplicationContext(), 0);
-                        adapter.add(Story.create(R.drawable.story1, "Story description", "Visiting New York City: 5 Insider Tips"));
-
-                        fragment.setListAdapter(adapter);
+                        fragment.setListAdapter(storyAdapter);
                         return fragment;
                     case 1:
                         return new PhotoFragment();
@@ -85,6 +83,14 @@ public class MainActivity extends AppCompatActivity {
         });
 
         viewPager.addOnPageChangeListener(new PageChangeListener(tabLayout));
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        storyAdapter.add(Story.create(R.drawable.story1, "Visiting New York City: 5 Insider Tips"));
+        storyAdapter.add(Story.create(R.drawable.story2, "How To Get Five Planets Into a Single Photograph"));
     }
 
     private class PageChangeListener implements ViewPager.OnPageChangeListener {
