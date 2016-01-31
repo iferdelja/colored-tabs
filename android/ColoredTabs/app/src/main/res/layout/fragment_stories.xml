@@ -1,21 +1,59 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:fillViewport="false">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        >
 
-        <RelativeLayout style="@style/Story"/>
+        <RelativeLayout
+            android:id="@+id/story1"
+            style="@style/Story"
+            android:layout_alignParentTop="true">
 
-        <RelativeLayout style="@style/Story"/>
+            <TextView
+                android:id="@+id/storyTitle"
+                style="@style/StoryTitle"
+                android:drawableRight="@drawable/ic_clear_black_24dp"
+                android:drawableTint="@color/storyTitle"
+                android:text="Suggested story"/>
 
-        <RelativeLayout style="@style/Story"/>
+            <ImageView
+                android:id="@+id/storyImage"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_below="@id/storyTitle"
+                android:scaleType="centerCrop"
+                android:src="@drawable/story1"/>
 
-        <RelativeLayout style="@style/Story"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal"
+                android:layout_below="@id/storyImage">
 
-        <RelativeLayout style="@style/Story"/>
+                <TextView
+                    style="@style/StoryAction"
+                    android:text="Save"/>
 
-    </LinearLayout>
+                <TextView
+                    style="@style/StoryAction"
+                    android:text="Share"/>
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/story2"
+            style="@style/Story"
+            android:layout_below="@id/story1"/>
+
+        <RelativeLayout
+            android:id="@+id/story3"
+            style="@style/Story"
+            android:layout_below="@id/story2"/>
+
+    </RelativeLayout>
 </ScrollView>

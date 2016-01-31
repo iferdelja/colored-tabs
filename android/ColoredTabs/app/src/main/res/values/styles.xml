@@ -8,13 +8,33 @@
 
     <style name="Story">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">200dp</item>
+        <item name="android:layout_height">wrap_content</item>
         <item name="android:background">@drawable/story</item>
         <item name="android:layout_margin">10dp</item>
     </style>
 
     <style name="TabText" parent="TextAppearance.AppCompat.Medium">
         <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="StoryTitle" parent="TextAppearance.AppCompat.Medium">
+        <item name="android:textSize">19dp</item>
+        <item name="android:textColor">@color/storyTitle</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:paddingRight">20dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">40dp</item>
+    </style>
+
+    <style name="StoryAction" parent="TextAppearance.AppCompat.Medium">
+        <item name="android:textSize">19dp</item>
+        <item name="android:textColor">@color/storyAction</item>
+        
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
     </style>
 
 </resources>
