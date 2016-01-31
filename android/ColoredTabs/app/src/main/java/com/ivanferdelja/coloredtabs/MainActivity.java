@@ -62,9 +62,10 @@ public class MainActivity extends AppCompatActivity {
             public Fragment getItem(int position) {
                 switch (position) {
                     case 0:
-                        android.support.v4.app.ListFragment fragment = new android.support.v4.app.ListFragment();
+                        StoryFragment fragment = new StoryFragment();
                         StoryAdapter adapter = new StoryAdapter(getApplicationContext(), 0);
                         adapter.add(Story.create(R.drawable.story1, "Story description"));
+
                         fragment.setListAdapter(adapter);
                         return fragment;
                     case 1:
@@ -131,10 +132,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public static class StoryFragment extends android.support.v4.app.ListFragment {
-//        @Override
-//        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-//            return inflater.inflate(R.layout.fragment_stories, container, false);
-//        }
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+            return inflater.inflate(R.layout.fragment_stories, container, false);
+        }
     }
 
     public static class PhotoFragment extends Fragment {
