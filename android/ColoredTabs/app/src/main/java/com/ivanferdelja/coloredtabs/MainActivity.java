@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.ListFragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -15,6 +16,7 @@ import android.widget.GridView;
 public class MainActivity extends AppCompatActivity {
 
     StoryAdapter storyAdapter;
+    ShareStreamAdapter shareStreamAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +60,17 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.setTabTextColors(getColorStateList(R.color.tab_color));
 
         storyAdapter = new StoryAdapter(getApplicationContext(), 0);
+        storyAdapter.add(Story.create(R.drawable.story1, "Visiting New York City: 5 Insider Tips"));
+        storyAdapter.add(Story.create(R.drawable.story2, "How To Get Five Planets Into a Single Photograph"));
+        storyAdapter.add(Story.create(R.drawable.story3, "Deforestation Threatens Pygmies, Study Finds"));
+
+        shareStreamAdapter = new ShareStreamAdapter(getApplicationContext());
+        ShareStream stream = new ShareStream();
+        stream.shareItems.add(ShareItem.create(R.drawable.dog, "Share item 1", R.drawable.story1));
+        stream.shareItems.add(ShareItem.create(R.drawable.dog2, "Share item 2", R.drawable.story2));
+        stream.shareItems.add(ShareItem.create(R.drawable.dog3, "Share item 3", R.drawable.story3));
+        shareStreamAdapter.add(stream);
+
         viewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
             public Fragment getItem(int position) {
@@ -69,7 +82,9 @@ public class MainActivity extends AppCompatActivity {
                     case 1:
                         return new PhotoFragment();
                     case 2:
-                        return new ShareFragment();
+                        ShareFragment fragment1 = new ShareFragment();
+                        fragment1.setListAdapter(shareStreamAdapter);
+                        return fragment1;
                     default:
                         return new Fragment();
                 }
@@ -83,15 +98,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         viewPager.addOnPageChangeListener(new PageChangeListener(tabLayout));
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        storyAdapter.add(Story.create(R.drawable.story1, "Visiting New York City: 5 Insider Tips"));
-        storyAdapter.add(Story.create(R.drawable.story2, "How To Get Five Planets Into a Single Photograph"));
-        storyAdapter.add(Story.create(R.drawable.story3, "Deforestation Threatens Pygmies, Study Finds"));
     }
 
     private class PageChangeListener implements ViewPager.OnPageChangeListener {
@@ -156,7 +162,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public static class ShareFragment extends Fragment {
+    public static class ShareFragment extends ListFragment {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             return inflater.inflate(R.layout.fragment_share, container, false);
