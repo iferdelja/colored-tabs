@@ -14,17 +14,19 @@
 
     <TextView
         android:id="@+id/title"
-        style="@style/StoryTitle"
+        style="@style/ShareItemTitle"
         android:layout_alignParentTop="true"
         android:layout_toLeftOf="@+id/image"
         android:layout_toRightOf="@id/author"
+        android:gravity="top"
         android:maxLines="3"
         android:minLines="3"
         android:text="Sharon Baker shared a video with you: Seattle park"/>
 
     <TextView
         android:id="@+id/timestamp"
-        style="@style/StoryTitle"
+        style="@style/ShareItemTitle"
+        android:textStyle="normal"
         android:layout_alignParentBottom="true"
         android:layout_toLeftOf="@+id/image"
         android:layout_toRightOf="@id/author"

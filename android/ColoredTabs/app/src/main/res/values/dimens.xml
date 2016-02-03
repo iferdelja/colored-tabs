@@ -2,8 +2,8 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-    <dimen name="share_item_height">120dp</dimen>
-    <dimen name="share_item_image_dim">100dp</dimen>
+    <dimen name="share_item_height">100dp</dimen>
+    <dimen name="share_item_image_dim">80dp</dimen>
     <dimen name="share_stream_divider_height">1dp</dimen>
     <dimen name="fragment_item_inset">10dp</dimen>
 </resources>
