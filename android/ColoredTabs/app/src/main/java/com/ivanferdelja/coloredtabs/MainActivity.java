@@ -71,6 +71,13 @@ public class MainActivity extends AppCompatActivity {
         stream.shareItems.add(ShareItem.create(R.drawable.dog3, "Share item 3", R.drawable.story3));
         shareStreamAdapter.add(stream);
 
+        ShareStream stream2 = new ShareStream();
+        stream2.shareItems.add(ShareItem.create(R.drawable.dog, "Share item 1", R.drawable.story1));
+        stream2.shareItems.add(ShareItem.create(R.drawable.dog2, "Share item 2", R.drawable.story2));
+        stream2.shareItems.add(ShareItem.create(R.drawable.dog3, "Share item 3", R.drawable.story3));
+        shareStreamAdapter.add(stream2);
+
+
         viewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
             public Fragment getItem(int position) {

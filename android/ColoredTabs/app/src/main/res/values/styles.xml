@@ -9,7 +9,7 @@
     <style name="Story">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:background">@drawable/story_background</item>
+        <item name="android:background">@drawable/fragment_item_background</item>
     </style>
 
     <style name="TabText" parent="TextAppearance.AppCompat.Medium">
@@ -52,12 +52,14 @@
     <style name="ShareStream">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:background">@drawable/story_background</item>
+        <item name="android:background">@drawable/fragment_item_background</item>
+        <item name="android:divider">@android:color/darker_gray</item>
+        <item name="android:dividerHeight">@dimen/share_stream_divider_height</item>
     </style>
 
-    <style name="SharedItem">
+    <style name="ShareItem">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">150dp</item>
-        <item name="android:padding">8dp</item>
+        <item name="android:layout_height">@dimen/share_item_height</item>
+        <item name="android:padding">10dp</item>
     </style>
 </resources>
