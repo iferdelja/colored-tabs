@@ -11,12 +11,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.GridView;
+import android.widget.ListView;
 
 public class MainActivity extends AppCompatActivity {
 
     StoryAdapter storyAdapter;
     ShareStreamAdapter shareStreamAdapter;
+    ElevationScrollControl elevationScrollControl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
         final TabLayout tabLayout = (TabLayout) findViewById(R.id.my_tabbar);
         final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
 
+        elevationScrollControl = new ElevationScrollControl();
+        elevationScrollControl.setView(tabLayout);
 
         tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tabA)));
         tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tabB)));
@@ -66,32 +71,41 @@ public class MainActivity extends AppCompatActivity {
 
         shareStreamAdapter = new ShareStreamAdapter(getApplicationContext());
         ShareStream stream = new ShareStream();
-        stream.shareItems.add(ShareItem.create(R.drawable.dog, "Share item 1", R.drawable.story1));
-        stream.shareItems.add(ShareItem.create(R.drawable.dog2, "Share item 2", R.drawable.story2));
-        stream.shareItems.add(ShareItem.create(R.drawable.dog3, "Share item 3", R.drawable.story3));
+        stream.shareItems.add(ShareItem.create(R.drawable.dog, "Share item a1", R.drawable.story1));
+        stream.shareItems.add(ShareItem.create(R.drawable.dog2, "Share item a2", R.drawable.story2));
+        stream.shareItems.add(ShareItem.create(R.drawable.dog3, "Share item a3", R.drawable.story3));
         shareStreamAdapter.add(stream);
 
         ShareStream stream2 = new ShareStream();
-        stream2.shareItems.add(ShareItem.create(R.drawable.dog, "Share item 1", R.drawable.story1));
-        stream2.shareItems.add(ShareItem.create(R.drawable.dog2, "Share item 2", R.drawable.story2));
-        stream2.shareItems.add(ShareItem.create(R.drawable.dog3, "Share item 3", R.drawable.story3));
+        stream2.shareItems.add(ShareItem.create(R.drawable.dog, "Share item b1", R.drawable.story1));
+        stream2.shareItems.add(ShareItem.create(R.drawable.dog2, "Share item b2", R.drawable.story2));
+        stream2.shareItems.add(ShareItem.create(R.drawable.dog3, "Share item b3", R.drawable.story3));
         shareStreamAdapter.add(stream2);
 
+        ShareStream stream3 = new ShareStream();
+        stream3.shareItems.add(ShareItem.create(R.drawable.dog, "Share item c1", R.drawable.story1));
+        stream3.shareItems.add(ShareItem.create(R.drawable.dog2, "Share item c2", R.drawable.story2));
+        stream3.shareItems.add(ShareItem.create(R.drawable.dog3, "Share item c3", R.drawable.story3));
+        shareStreamAdapter.add(stream3);
 
         viewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
             public Fragment getItem(int position) {
                 switch (position) {
                     case 0:
-                        StoryFragment fragment = new StoryFragment();
-                        fragment.setListAdapter(storyAdapter);
-                        return fragment;
+                        StoryFragment storyFragment = new StoryFragment();
+                        storyFragment.setListAdapter(storyAdapter);
+                        storyFragment.setEsc(elevationScrollControl);
+                        return storyFragment;
                     case 1:
-                        return new PhotoFragment();
+                        PhotoFragment photoFragment = new PhotoFragment();
+                        photoFragment.setEsc(elevationScrollControl);
+                        return photoFragment;
                     case 2:
-                        ShareFragment fragment1 = new ShareFragment();
-                        fragment1.setListAdapter(shareStreamAdapter);
-                        return fragment1;
+                        ShareFragment shareFragment = new ShareFragment();
+                        shareFragment.setListAdapter(shareStreamAdapter);
+                        shareFragment.setEsc(elevationScrollControl);
+                        return shareFragment;
                     default:
                         return new Fragment();
                 }
@@ -152,27 +166,85 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public static class StoryFragment extends android.support.v4.app.ListFragment {
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-            return inflater.inflate(R.layout.fragment_stories, container, false);
+    public static class BaseListFragment extends ListFragment {
+
+        ElevationScrollControl esc;
+
+        public void setEsc(ElevationScrollControl esc) {
+            this.esc = esc;
+        }
+        protected void updateElevationScrollControl(final AbsListView view) {
+            view.setOnScrollListener(new AbsListView.OnScrollListener() {
+                @Override
+                public void onScrollStateChanged(AbsListView absListView, int i) {
+                }
+
+                @Override
+                public void onScroll(AbsListView absListView, int i, int i1, int i2) {
+                    View first = view.getChildAt(0);
+                    if (first != null) {
+                        esc.scrollingUpdate(first.getTop() < 0);
+                    }
+                }
+            });
         }
     }
 
-    public static class PhotoFragment extends Fragment {
+    public static class StoryFragment extends BaseListFragment {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-            View view = inflater.inflate(R.layout.fragment_photos, container, false);
-            GridView gridView = (GridView) view.findViewById(R.id.grid);
-            gridView.setAdapter(new ImageAdapter(getContext()));
+            final View view = inflater.inflate(R.layout.fragment_stories, container, false);
+            updateElevationScrollControl((ListView)view);
             return view;
         }
     }
 
-    public static class ShareFragment extends ListFragment {
+    public static class PhotoFragment extends Fragment {
+        ElevationScrollControl esc;
+        public void setEsc(ElevationScrollControl esc) {
+            this.esc = esc;
+        }
+
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-            return inflater.inflate(R.layout.fragment_share, container, false);
+            final View view = inflater.inflate(R.layout.fragment_photos, container, false);
+            final GridView gridView = (GridView) view.findViewById(R.id.grid);
+            gridView.setAdapter(new ImageAdapter(getContext()));
+            gridView.setOnScrollListener(new AbsListView.OnScrollListener() {
+                @Override
+                public void onScrollStateChanged(AbsListView absListView, int i) {
+                }
+
+                @Override
+                public void onScroll(AbsListView absListView, int i, int i1, int i2) {
+                    View first = gridView.getChildAt(0);
+                    if (first != null) {
+                        esc.scrollingUpdate(first.getTop() < 0);
+                    }
+                }
+            });
+            return view;
+        }
+    }
+
+    public static class ShareFragment extends BaseListFragment {
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+            View view = inflater.inflate(R.layout.fragment_share, container, false);
+            updateElevationScrollControl((ListView)view);
+            return view;
+        }
+    }
+
+    public class ElevationScrollControl {
+        View view;
+
+        public void setView(View view) {
+            this.view = view;
+        }
+
+        public void scrollingUpdate(boolean isScrolling) {
+            view.setElevation(isScrolling ? getResources().getDimensionPixelSize(R.dimen.elevation) : 0);
         }
     }
 
