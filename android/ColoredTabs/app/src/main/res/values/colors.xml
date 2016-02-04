@@ -5,5 +5,5 @@
     <color name="colorC">#00B466</color>
     <color name="storyTitle">#A9A9A9</color>
     <color name="storyAction">#808080</color>
-
+    <color name="light_grey">#f2f2f2</color>
 </resources>

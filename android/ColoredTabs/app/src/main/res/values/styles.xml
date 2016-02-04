@@ -53,7 +53,7 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:background">@drawable/fragment_item_background</item>
-        <item name="android:divider">@android:color/darker_gray</item>
+        <item name="android:divider">@color/light_grey</item>
         <item name="android:dividerHeight">@dimen/share_stream_divider_height</item>
     </style>
 

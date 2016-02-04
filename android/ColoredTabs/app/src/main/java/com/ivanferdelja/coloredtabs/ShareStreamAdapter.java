@@ -23,8 +23,9 @@ public class ShareStreamAdapter extends ArrayAdapter<ShareStream> {
         ShareItemAdapter adapter = new ShareItemAdapter(getContext());
         adapter.addAll(stream.shareItems);
         streamView.getLayoutParams().height = stream.shareItems.size()
-                * (getContext().getResources().getDimensionPixelSize(R.dimen.share_item_height)
-                + getContext().getResources().getDimensionPixelSize(R.dimen.share_stream_divider_height))
+                * getContext().getResources().getDimensionPixelSize(R.dimen.share_item_height)
+                + (stream.shareItems.size() - 1)
+                * getContext().getResources().getDimensionPixelSize(R.dimen.share_stream_divider_height)
                 + 2 * getContext().getResources().getDimensionPixelSize(R.dimen.fragment_item_inset);
         ((ListView) streamView).setAdapter(adapter);
 
