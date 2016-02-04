@@ -31,6 +31,10 @@ public class ShareItemAdapter extends ArrayAdapter<ShareItem> {
         ImageView imageView = (ImageView) shareItemView.findViewById(R.id.image);
         imageView.setImageResource(shareItem.imageResource);
 
+
+        TextView timestamp = (TextView) shareItemView.findViewById(R.id.timestamp);
+        timestamp.setText(shareItem.timestamp);
+
         return shareItemView;
     }
 }

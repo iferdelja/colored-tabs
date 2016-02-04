@@ -3,7 +3,9 @@
     <color name="colorA">#0099F4</color>
     <color name="colorB">#2C302F</color>
     <color name="colorC">#00B466</color>
-    <color name="storyTitle">#A9A9A9</color>
-    <color name="storyAction">#808080</color>
+    <color name="storyTitle">#d9d9d9</color>
+    <color name="storyAction">#999999</color>
     <color name="light_grey">#f2f2f2</color>
+    <color name="shareTitle">#737373</color>
+    <color name="shareTimestamp">#bfbfbf</color>
 </resources>

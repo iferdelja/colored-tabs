@@ -6,8 +6,8 @@
 
     <com.ivanferdelja.coloredtabs.SpecialImageView
         android:id="@+id/author"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="@dimen/share_item_author_image_dim"
+        android:layout_height="@dimen/share_item_author_image_dim"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:scaleType="centerCrop"
@@ -22,19 +22,18 @@
         android:layout_toLeftOf="@+id/image"
         android:layout_toRightOf="@id/author"
         android:gravity="top"
+        android:includeFontPadding="false"
         android:maxLines="3"
-        android:minLines="3"
-        android:text="Sharon Baker shared a video with you: Seattle park"/>
+        android:minLines="3"/>
 
     <TextView
         android:id="@+id/timestamp"
-        style="@style/ShareItemTitle"
+        style="@style/ShareItemTimestamp"
         android:textStyle="normal"
         android:layout_alignParentBottom="true"
         android:layout_toLeftOf="@+id/image"
         android:layout_toRightOf="@id/author"
-        android:maxLines="1"
-        android:text="20m"/>
+        android:maxLines="1"/>
 
     <com.ivanferdelja.coloredtabs.SpecialImageView
         android:id="@+id/image"

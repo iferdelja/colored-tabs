@@ -65,22 +65,22 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.setTabTextColors(getColorStateList(R.color.tab_color));
 
         storyAdapter = new StoryAdapter(getApplicationContext(), 0);
-        storyAdapter.add(Story.create(R.drawable.story1, getString(R.string.story1_title)));
         storyAdapter.add(Story.create(R.drawable.story2, getString(R.string.story2_title)));
+        storyAdapter.add(Story.create(R.drawable.story1, getString(R.string.story1_title)));
         storyAdapter.add(Story.create(R.drawable.story3, getString(R.string.story3_title)));
 
         shareStreamAdapter = new ShareStreamAdapter(getApplicationContext());
         ShareStream stream = new ShareStream();
-        stream.shareItems.add(ShareItem.create(R.drawable.face1, "Share item a1", R.drawable.nature9));
-        stream.shareItems.add(ShareItem.create(R.drawable.face2, "Share item a2", R.drawable.nature8));
-        stream.shareItems.add(ShareItem.create(R.drawable.face3, "Share item a3", R.drawable.nature5));
-        stream.shareItems.add(ShareItem.create(R.drawable.face4, "Share item b1", R.drawable.nature6));
+        stream.shareItems.add(ShareItem.create(R.drawable.face1, getString(R.string.share1_text), R.drawable.nature9, "10m"));
+        stream.shareItems.add(ShareItem.create(R.drawable.face2, getString(R.string.share2_text), R.drawable.nature8, "10m"));
+        stream.shareItems.add(ShareItem.create(R.drawable.face3, getString(R.string.share3_text), R.drawable.nature5, "10m"));
+        stream.shareItems.add(ShareItem.create(R.drawable.face4, getString(R.string.share4_text), R.drawable.nature6, "10m"));
         shareStreamAdapter.add(stream);
 
         ShareStream stream3 = new ShareStream();
-        stream3.shareItems.add(ShareItem.create(R.drawable.face2, "Share item c1", R.drawable.nature7));
-        stream3.shareItems.add(ShareItem.create(R.drawable.face3, "Share item c2", R.drawable.nature4));
-        stream3.shareItems.add(ShareItem.create(R.drawable.face1, "Share item c3", R.drawable.nature3));
+        stream3.shareItems.add(ShareItem.create(R.drawable.face2, getString(R.string.share5_text), R.drawable.nature7, "40m"));
+        stream3.shareItems.add(ShareItem.create(R.drawable.face3, getString(R.string.share3_text), R.drawable.nature4, "45m"));
+        stream3.shareItems.add(ShareItem.create(R.drawable.face4, getString(R.string.share4_text), R.drawable.nature3, "1h"));
         shareStreamAdapter.add(stream3);
 
         viewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
@@ -177,7 +177,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onScroll(AbsListView absListView, int i, int i1, int i2) {
                     View first = view.getChildAt(0);
-                    if (first != null) {
+                    if (first != null && esc != null) {
                         esc.scrollingUpdate(first.getTop() < 0);
                     }
                 }
@@ -213,7 +213,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onScroll(AbsListView absListView, int i, int i1, int i2) {
                     View first = gridView.getChildAt(0);
-                    if (first != null) {
+                    if (first != null && esc != null) {
                         esc.scrollingUpdate(first.getTop() < 0);
                     }
                 }

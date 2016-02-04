@@ -13,7 +13,7 @@
     <ImageView
         android:id="@+id/image"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="220dp"
         android:layout_below="@id/title"
         android:scaleType="centerCrop"
         android:src="@drawable/story1"/>
@@ -27,7 +27,7 @@
     <LinearLayout
         android:id="@+id/actions"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:layout_below="@id/image"
         android:orientation="horizontal">
 

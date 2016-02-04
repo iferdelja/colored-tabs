@@ -16,15 +16,15 @@
         <item name="android:textAllCaps">false</item>
     </style>
 
-    <style name="StoryTitle" parent="TextAppearance.AppCompat.Medium">
+    <style name="StoryTitle">
         <item name="android:textSize">18dp</item>
         <item name="android:textColor">@color/storyTitle</item>
-        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:paddingLeft">20dp</item>
         <item name="android:paddingRight">20dp</item>
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_height">50dp</item>
     </style>
 
     <style name="StoryAction" parent="TextAppearance.AppCompat.Medium">
@@ -64,16 +64,27 @@
     </style>
 
 
-    <style name="ShareItemTitle" parent="TextAppearance.AppCompat.Medium">
-        <item name="android:textSize">16dp</item>
-        <item name="android:textColor">@color/storyTitle</item>
-        <item name="android:fontFamily">sans-serif</item>
-        <item name="android:textStyle">bold</item>
+    <style name="ShareItemTitle">
+        <item name="android:textSize">15dp</item>
+        <item name="android:textColor">@color/shareTitle</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginLeft">8dp</item>
         <item name="android:layout_marginRight">8dp</item>
     </style>
+
+    <style name="ShareItemTimestamp">
+        <item name="android:textSize">15dp</item>
+        <item name="android:textColor">@color/shareTimestamp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">8dp</item>
+        <item name="android:layout_marginRight">8dp</item>
+    </style>
+
 
 </resources>

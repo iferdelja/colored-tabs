@@ -8,4 +8,10 @@
     <string name="story1_title">2015 Was Hottest Year in Historical Record, Scientists Say</string>
     <string name="story2_title">How To Get Five Planets Into a Single Photograph</string>
     <string name="story3_title">Deforestation Threatens Pygmies, Study Finds</string>
+
+    <string name="share1_text">Raphael Jones shared a photo with you: Ponderosa Oregon</string>
+    <string name="share2_text">Dolores Smith shared a video with you: Pollination story</string>
+    <string name="share3_text">Sharon Baker shared a photo with you.</string>
+    <string name="share4_text">William Baker shared a photo with you.</string>
+    <string name="share5_text">Dolores Smith shared a photo with you.</string>
 </resources>
