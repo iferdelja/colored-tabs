@@ -1,0 +1,8 @@
+<resources>
+    <declare-styleable name="SpecialImageView">
+        <attr name="mode">
+            <enum name="circle" value="1"/>
+            <enum name="rounded_corners" value="2"/>
+        </attr>
+    </declare-styleable>
+</resources>

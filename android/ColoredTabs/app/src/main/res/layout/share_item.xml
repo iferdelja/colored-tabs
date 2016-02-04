@@ -1,16 +1,19 @@
 <RelativeLayout
     style="@style/ShareItem"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-    <ImageView
+    <com.ivanferdelja.coloredtabs.SpecialImageView
         android:id="@+id/author"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:scaleType="centerCrop"
-        android:src="@drawable/story1"/>
+        android:src="@drawable/story1"
+        app:mode="circle"
+        />
 
     <TextView
         android:id="@+id/title"
@@ -33,12 +36,13 @@
         android:maxLines="1"
         android:text="20m"/>
 
-    <ImageView
+    <com.ivanferdelja.coloredtabs.SpecialImageView
         android:id="@+id/image"
         android:layout_width="@dimen/share_item_image_dim"
         android:layout_height="@dimen/share_item_image_dim"
         android:layout_alignParentRight="true"
         android:scaleType="centerCrop"
-        android:src="@drawable/story1"/>
+        android:src="@drawable/story1"
+        app:mode="rounded_corners"/>
 
 </RelativeLayout>
