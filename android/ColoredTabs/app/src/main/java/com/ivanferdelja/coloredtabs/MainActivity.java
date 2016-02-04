@@ -60,9 +60,9 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.setTabTextColors(getColorStateList(R.color.tab_color));
 
         storyAdapter = new StoryAdapter(getApplicationContext(), 0);
-        storyAdapter.add(Story.create(R.drawable.story1, "Visiting New York City: 5 Insider Tips"));
-        storyAdapter.add(Story.create(R.drawable.story2, "How To Get Five Planets Into a Single Photograph"));
-        storyAdapter.add(Story.create(R.drawable.story3, "Deforestation Threatens Pygmies, Study Finds"));
+        storyAdapter.add(Story.create(R.drawable.story1, getString(R.string.story1_title)));
+        storyAdapter.add(Story.create(R.drawable.story2, getString(R.string.story2_title)));
+        storyAdapter.add(Story.create(R.drawable.story3, getString(R.string.story3_title)));
 
         shareStreamAdapter = new ShareStreamAdapter(getApplicationContext());
         ShareStream stream = new ShareStream();
