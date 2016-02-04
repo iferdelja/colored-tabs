@@ -71,21 +71,16 @@ public class MainActivity extends AppCompatActivity {
 
         shareStreamAdapter = new ShareStreamAdapter(getApplicationContext());
         ShareStream stream = new ShareStream();
-        stream.shareItems.add(ShareItem.create(R.drawable.dog, "Share item a1", R.drawable.story1));
-        stream.shareItems.add(ShareItem.create(R.drawable.dog2, "Share item a2", R.drawable.story2));
-        stream.shareItems.add(ShareItem.create(R.drawable.dog3, "Share item a3", R.drawable.story3));
+        stream.shareItems.add(ShareItem.create(R.drawable.face1, "Share item a1", R.drawable.nature9));
+        stream.shareItems.add(ShareItem.create(R.drawable.face2, "Share item a2", R.drawable.nature8));
+        stream.shareItems.add(ShareItem.create(R.drawable.face3, "Share item a3", R.drawable.nature5));
+        stream.shareItems.add(ShareItem.create(R.drawable.face4, "Share item b1", R.drawable.nature6));
         shareStreamAdapter.add(stream);
 
-        ShareStream stream2 = new ShareStream();
-        stream2.shareItems.add(ShareItem.create(R.drawable.dog, "Share item b1", R.drawable.story1));
-        stream2.shareItems.add(ShareItem.create(R.drawable.dog2, "Share item b2", R.drawable.story2));
-        stream2.shareItems.add(ShareItem.create(R.drawable.dog3, "Share item b3", R.drawable.story3));
-        shareStreamAdapter.add(stream2);
-
         ShareStream stream3 = new ShareStream();
-        stream3.shareItems.add(ShareItem.create(R.drawable.dog, "Share item c1", R.drawable.story1));
-        stream3.shareItems.add(ShareItem.create(R.drawable.dog2, "Share item c2", R.drawable.story2));
-        stream3.shareItems.add(ShareItem.create(R.drawable.dog3, "Share item c3", R.drawable.story3));
+        stream3.shareItems.add(ShareItem.create(R.drawable.face2, "Share item c1", R.drawable.nature7));
+        stream3.shareItems.add(ShareItem.create(R.drawable.face3, "Share item c2", R.drawable.nature4));
+        stream3.shareItems.add(ShareItem.create(R.drawable.face1, "Share item c3", R.drawable.nature3));
         shareStreamAdapter.add(stream3);
 
         viewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
