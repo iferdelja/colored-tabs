@@ -6,10 +6,9 @@
 
     </style>
 
-    <style name="Story">
+    <style name="StoryCard" parent="CardView.Light">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:background">@drawable/fragment_item_background</item>
     </style>
 
     <style name="TabText" parent="TextAppearance.AppCompat.Medium">

@@ -1,43 +1,58 @@
-<RelativeLayout
-    style="@style/Story"
+<android.support.v7.widget.CardView
+    style="@style/StoryCard"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    card_view:cardBackgroundColor="@color/light_grey"
+    card_view:cardCornerRadius="4dp"
+    card_view:cardElevation="2dp"
+    card_view:cardMaxElevation="8dp"
+    android:layout_marginLeft="8dp"
+    android:layout_marginRight="8dp"
+    android:layout_marginTop="4dp"
+    android:layout_marginBottom="4dp"
     >
 
-    <TextView
-        android:id="@+id/title"
-        style="@style/StoryTitle"
-        android:drawableRight="@drawable/ic_clear_black_24dp"
-        android:drawableTint="@color/storyTitle"
-        android:text="Suggested story"/>
-
-    <ImageView
-        android:id="@+id/image"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="220dp"
-        android:layout_below="@id/title"
-        android:scaleType="centerCrop"
-        android:src="@drawable/story1"/>
-
-    <TextView
-        android:id="@+id/headline"
-        style="@style/StoryOverlay"
-        android:text="Suggested story"
-        android:layout_above="@+id/actions"/>
-
-    <LinearLayout
-        android:id="@+id/actions"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@id/image"
-        android:orientation="horizontal">
+        android:layout_height="match_parent">
 
         <TextView
-            style="@style/StoryAction"
-            android:text="Save"/>
+            android:id="@+id/title"
+            style="@style/StoryTitle"
+            android:drawableRight="@drawable/ic_clear_black_24dp"
+            android:drawableTint="@color/storyTitle"
+            android:text="Suggested story"/>
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:layout_below="@id/title"
+            android:scaleType="centerCrop"
+            android:src="@drawable/story1"/>
 
         <TextView
-            style="@style/StoryAction"
-            android:text="Share"/>
-    </LinearLayout>
+            android:id="@+id/headline"
+            style="@style/StoryOverlay"
+            android:layout_above="@+id/actions"
+            android:text="Suggested story"/>
 
-</RelativeLayout>
+        <LinearLayout
+            android:id="@+id/actions"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/image"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/StoryAction"
+                android:text="Save"/>
+
+            <TextView
+                style="@style/StoryAction"
+                android:text="Share"/>
+        </LinearLayout>
+
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>
