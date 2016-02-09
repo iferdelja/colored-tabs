@@ -1,8 +1,5 @@
-<ListView android:id="@id/android:list"
+<android.support.v7.widget.RecyclerView android:id="@+id/story_recycler_view"
           xmlns:android="http://schemas.android.com/apk/res/android"
           android:layout_width="match_parent"
           android:layout_height="match_parent"
-          android:layout_weight="1"
-          android:drawSelectorOnTop="false"
-          android:divider="@android:color/transparent"
     />

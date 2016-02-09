@@ -1,31 +1,49 @@
 package com.ivanferdelja.coloredtabs;
 
-import android.content.Context;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class StoryAdapter extends ArrayAdapter<Story> {
+import java.util.List;
 
-    public StoryAdapter(Context context, int resource) {
-        super(context, resource);
+public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.ViewHolder> {
+
+    List<Story> stories;
+
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        public View view;
+
+        public ViewHolder(View storyView) {
+            super(storyView);
+            this.view = storyView;
+        }
     }
 
-    public View getView(int position, View convertView, ViewGroup parent) {
-        View storyView = convertView;
-        if (storyView == null) {
-            storyView = LayoutInflater.from(getContext()).inflate(R.layout.story, null);
-        }
+    public StoryAdapter(List<Story> stories) {
+        this.stories = stories;
+    }
 
-        Story story = getItem(position);
+    @Override
+    public int getItemCount() {
+        return stories.size();
+    }
 
-        ImageView storyImage = (ImageView) storyView.findViewById(R.id.image);
+    @Override
+    public void onBindViewHolder(ViewHolder holder, int position) {
+        Story story = stories.get(position);
+        ImageView storyImage = (ImageView) holder.view.findViewById(R.id.image);
         storyImage.setImageResource(story.imageResource);
-        TextView headline = (TextView) storyView.findViewById(R.id.headline);
+        TextView headline = (TextView) holder.view.findViewById(R.id.headline);
         headline.setText(story.headline);
-        return storyView;
+    }
+
+    @Override
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View storyView = LayoutInflater.from(parent.getContext()).inflate(R.layout.story, null);
+        ViewHolder viewHolder = new ViewHolder(storyView);
+        return viewHolder;
     }
 }

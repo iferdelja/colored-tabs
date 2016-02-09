@@ -17,7 +17,6 @@ import android.widget.ListView;
 
 public class MainActivity extends AppCompatActivity {
 
-    StoryAdapter storyAdapter;
     ShareStreamAdapter shareStreamAdapter;
     ElevationScrollControl elevationScrollControl;
 
@@ -64,11 +63,6 @@ public class MainActivity extends AppCompatActivity {
         });
         tabLayout.setTabTextColors(getColorStateList(R.color.tab_color));
 
-        storyAdapter = new StoryAdapter(getApplicationContext(), 0);
-        storyAdapter.add(Story.create(R.drawable.story2, getString(R.string.story2_title)));
-        storyAdapter.add(Story.create(R.drawable.story1, getString(R.string.story1_title)));
-        storyAdapter.add(Story.create(R.drawable.story3, getString(R.string.story3_title)));
-
         shareStreamAdapter = new ShareStreamAdapter(getApplicationContext());
         ShareStream stream = new ShareStream();
         stream.shareItems.add(ShareItem.create(R.drawable.face1, getString(R.string.share1_text), R.drawable.nature9, "10m"));
@@ -89,8 +83,7 @@ public class MainActivity extends AppCompatActivity {
                 switch (position) {
                     case 0:
                         StoryFragment storyFragment = new StoryFragment();
-                        storyFragment.setListAdapter(storyAdapter);
-                        storyFragment.setEsc(elevationScrollControl);
+                        //storyFragment.setEsc(elevationScrollControl);
                         return storyFragment;
                     case 1:
                         PhotoFragment photoFragment = new PhotoFragment();
@@ -185,14 +178,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public static class StoryFragment extends BaseListFragment {
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-            final View view = inflater.inflate(R.layout.fragment_stories, container, false);
-            updateElevationScrollControl((ListView)view);
-            return view;
-        }
-    }
+
 
     public static class PhotoFragment extends Fragment {
         ElevationScrollControl esc;
