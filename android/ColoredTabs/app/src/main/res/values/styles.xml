@@ -16,30 +16,30 @@
     </style>
 
     <style name="StoryTitle">
-        <item name="android:textSize">18dp</item>
+        <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/storyTitle</item>
-        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:fontFamily">sans-serif</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:paddingLeft">20dp</item>
         <item name="android:paddingRight">20dp</item>
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_height">48dp</item>
     </style>
 
-    <style name="StoryAction" parent="TextAppearance.AppCompat.Medium">
-        <item name="android:textSize">19dp</item>
+    <style name="StoryAction">
+        <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/storyAction</item>
-        <item name="android:fontFamily">sans-serif-medium</item>
         <item name="android:gravity">center</item>
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_height">48dp</item>
         <item name="android:layout_weight">1</item>
+        <item name="android:textAllCaps">true</item>
     </style>
 
-    <style name="StoryOverlay" parent="TextAppearance.AppCompat.Medium">
-        <item name="android:textSize">18dp</item>
+    <style name="StoryOverlay">
+        <item name="android:textSize">21sp</item>
         <item name="android:textColor">@android:color/white</item>
-        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="typeface">roboto-medium</item>
         <item name="android:gravity">center</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>

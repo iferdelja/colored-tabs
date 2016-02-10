@@ -5,4 +5,6 @@
             <enum name="rounded_corners" value="2"/>
         </attr>
     </declare-styleable>
+
+    <attr name="typeface" format="string" />
 </resources>
