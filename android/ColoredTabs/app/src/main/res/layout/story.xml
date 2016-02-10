@@ -20,7 +20,7 @@
         <TextView
             android:id="@+id/title"
             style="@style/StoryTitle"
-            android:drawableEnd="@drawable/ic_clear_black_24dp"
+            android:drawableRight="@drawable/ic_clear_black_24dp"
             android:drawableTint="@color/storyTitle"
             android:text="Suggested story"/>
 
@@ -33,10 +33,11 @@
             android:scaleType="center"
             android:src="@drawable/story1"/>
 
-        <TextView
+        <com.ivanferdelja.coloredtabs.CustomTextView
             android:id="@+id/headline"
             style="@style/StoryOverlay"
             android:layout_above="@+id/actions"
+            app:typeface="roboto-medium"
             android:text="Suggested story"/>
 
         <LinearLayout

@@ -40,7 +40,6 @@
     <style name="StoryOverlay">
         <item name="android:textSize">21sp</item>
         <item name="android:textColor">@android:color/white</item>
-        <item name="typeface">roboto-medium</item>
         <item name="android:gravity">center</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
