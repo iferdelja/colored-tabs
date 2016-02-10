@@ -38,6 +38,8 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.ViewHolder> 
         storyImage.setImageResource(story.imageResource);
         TextView headline = (TextView) holder.view.findViewById(R.id.headline);
         headline.setText(story.headline);
+
+
     }
 
     @Override

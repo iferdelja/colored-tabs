@@ -1,23 +1,22 @@
 package com.ivanferdelja.coloredtabs;
 
 import android.animation.ArgbEvaluator;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.ListFragment;
+import android.support.v4.graphics.ColorUtils;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.AppCompatTextView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.GridView;
 import android.widget.ListView;
-import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -118,6 +117,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
         viewPager.addOnPageChangeListener(new PageChangeListener(tabLayout));
+
+        Log.d("Colored tabs", "Contrast: " + ColorUtils.calculateContrast(getColor(R.color.storyTitle), getColor(R.color.light_grey)));
     }
 
     private class PageChangeListener implements ViewPager.OnPageChangeListener {
@@ -172,6 +173,7 @@ public class MainActivity extends AppCompatActivity {
         public void setEsc(ElevationScrollControl esc) {
             this.esc = esc;
         }
+
         protected void updateElevationScrollControl(final AbsListView view) {
             view.setOnScrollListener(new AbsListView.OnScrollListener() {
                 @Override
@@ -190,9 +192,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
     public static class PhotoFragment extends Fragment {
         ElevationScrollControl esc;
+
         public void setEsc(ElevationScrollControl esc) {
             this.esc = esc;
         }
@@ -223,7 +225,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             View view = inflater.inflate(R.layout.fragment_share, container, false);
-            updateElevationScrollControl((ListView)view);
+            updateElevationScrollControl((ListView) view);
             return view;
         }
     }

@@ -20,7 +20,7 @@
         <TextView
             android:id="@+id/title"
             style="@style/StoryTitle"
-            android:drawableRight="@drawable/ic_clear_black_24dp"
+            android:drawableEnd="@drawable/ic_clear_black_24dp"
             android:drawableTint="@color/storyTitle"
             android:text="Suggested story"/>
 
