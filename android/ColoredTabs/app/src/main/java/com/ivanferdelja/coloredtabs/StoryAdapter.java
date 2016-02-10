@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
 
 public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.ViewHolder> {
@@ -34,12 +36,25 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Story story = stories.get(position);
-        ImageView storyImage = (ImageView) holder.view.findViewById(R.id.image);
+
+        View.OnClickListener uselessClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        };
+        ImageView storyImage = (ImageView) holder.view.findViewById(R.id.story_image);
+        storyImage.setOnClickListener(uselessClickListener);
         storyImage.setImageResource(story.imageResource);
         TextView headline = (TextView) holder.view.findViewById(R.id.headline);
         headline.setText(story.headline);
+        TextView title = (TextView) holder.view.findViewById(R.id.title);
+        title.setOnClickListener(uselessClickListener);
 
-
+        TextView saveAction = (TextView) holder.view.findViewById(R.id.save);
+        saveAction.setOnClickListener(uselessClickListener);
+        TextView shareAction = (TextView) holder.view.findViewById(R.id.share);
+        shareAction.setOnClickListener(uselessClickListener);
     }
 
     @Override

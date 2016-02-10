@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
         final TabLayout tabLayout = (TabLayout) findViewById(R.id.my_tabbar);
         final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,10 +54,13 @@ public class MainActivity extends AppCompatActivity {
             public void onTabSelected(TabLayout.Tab tab) {
                 if (getString(R.string.tabA).equals(tab.getText())) {
                     viewPager.setCurrentItem(0);
+                    fab.show();
                 } else if (getString(R.string.tabB).equals(tab.getText())) {
                     viewPager.setCurrentItem(1);
+                    fab.hide();
                 } else if (getString(R.string.tabC).equals(tab.getText())) {
                     viewPager.setCurrentItem(2);
+                    fab.hide();
                 }
             }
 

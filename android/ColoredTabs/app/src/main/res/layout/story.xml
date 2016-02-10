@@ -22,16 +22,18 @@
             style="@style/StoryTitle"
             android:drawableRight="@drawable/ic_clear_black_24dp"
             android:drawableTint="@color/storyTitle"
-            android:text="Suggested story"/>
+            android:text="Suggested story"
+            android:background="?attr/selectableItemBackground"/>
 
-        <ImageView
-            android:id="@+id/image"
+        <com.ivanferdelja.coloredtabs.ForegroundImageView
+            android:id="@+id/story_image"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
             android:layout_below="@id/title"
             android:scaleType="center"
-            android:src="@drawable/story1"/>
+            android:src="@drawable/story1"
+            android:foreground="?attr/selectableItemBackground"/>
 
         <com.ivanferdelja.coloredtabs.CustomTextView
             android:id="@+id/headline"
@@ -44,18 +46,22 @@
             android:id="@+id/actions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/image"
+            android:layout_below="@id/story_image"
             android:orientation="horizontal">
 
             <com.ivanferdelja.coloredtabs.CustomTextView
+                android:id="@+id/save"
                 style="@style/StoryAction"
                 android:text="Save"
-                app:typeface="roboto-medium"/>
+                app:typeface="roboto-medium"
+                android:background="?attr/selectableItemBackground"/>
 
             <com.ivanferdelja.coloredtabs.CustomTextView
+                android:id="@+id/share"
                 style="@style/StoryAction"
                 android:text="Share"
-                app:typeface="roboto-medium"/>
+                app:typeface="roboto-medium"
+                android:background="?attr/selectableItemBackground"/>
         </LinearLayout>
 
 

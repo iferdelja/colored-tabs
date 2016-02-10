@@ -1,6 +1,9 @@
 package com.ivanferdelja.coloredtabs;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.RippleDrawable;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -27,9 +30,9 @@ public class ImageAdapter extends BaseAdapter {
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
-        ImageView imageView;
+        ForegroundImageView imageView;
         if (convertView == null) {
-            imageView = new ImageView(mContext);
+            imageView = new ForegroundImageView(mContext);
             imageView.setAdjustViewBounds(true);
             imageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
             int imageResource = R.drawable.nature3;
@@ -60,8 +63,12 @@ public class ImageAdapter extends BaseAdapter {
                     break;
             }
             imageView.setImageResource(imageResource);
+
+            RippleDrawable rippleDrawable = new RippleDrawable(ColorStateList.valueOf(
+                    mContext.getColor(android.support.design.R.color.ripple_material_light)), null, null);
+            imageView.setForeground(rippleDrawable);
         } else {
-            imageView = (ImageView) convertView;
+            imageView = (ForegroundImageView) convertView;
         }
 
         return imageView;

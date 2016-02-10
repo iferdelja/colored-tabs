@@ -7,4 +7,8 @@
     </declare-styleable>
 
     <attr name="typeface" format="string" />
+
+    <declare-styleable name="ForegroundImageView">
+        <attr name="android:foreground"/>
+    </declare-styleable>
 </resources>
