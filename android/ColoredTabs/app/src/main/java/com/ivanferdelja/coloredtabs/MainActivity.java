@@ -3,6 +3,7 @@ package com.ivanferdelja.coloredtabs;
 import android.animation.ArgbEvaluator;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -30,6 +31,13 @@ public class MainActivity extends AppCompatActivity {
 
         final TabLayout tabLayout = (TabLayout) findViewById(R.id.my_tabbar);
         final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            }
+        });
 
         elevationScrollControl = new ElevationScrollControl();
         elevationScrollControl.setView(tabLayout);
