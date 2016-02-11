@@ -17,11 +17,17 @@ public class ShareItemAdapter extends ArrayAdapter<ShareItem> {
     public View getView(int position, View convertView, ViewGroup parent) {
         View shareItemView = convertView;
         if (shareItemView == null) {
-            shareItemView = LayoutInflater.from(getContext()).inflate(R.layout.share_item, null);
+            shareItemView = LayoutInflater.from(getContext()).inflate(R.layout.share_item, parent, false);
         }
 
         ShareItem shareItem = getItem(position);
 
+        shareItemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
         ImageView authorImage = (ImageView) shareItemView.findViewById(R.id.author);
         authorImage.setImageResource(shareItem.authorImageResource);
 

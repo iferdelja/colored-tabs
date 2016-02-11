@@ -56,10 +56,12 @@
         <item name="android:dividerHeight">@dimen/share_stream_divider_height</item>
     </style>
 
-    <style name="ShareItem">
+    <style name="ShareItem" >
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/share_item_height</item>
         <item name="android:padding">10dp</item>
+        <item name="android:background">?android:attr/selectableItemBackground</item>
+        <item name="android:clickable">true</item>
     </style>
 
 
