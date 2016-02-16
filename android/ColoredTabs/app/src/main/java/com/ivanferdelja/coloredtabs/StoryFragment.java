@@ -37,6 +37,10 @@ public class StoryFragment extends Fragment {
         stories.add(Story.create(R.drawable.story2, getString(R.string.story2_title)));
         stories.add(Story.create(R.drawable.story1, getString(R.string.story1_title)));
         stories.add(Story.create(R.drawable.story3, getString(R.string.story3_title)));
+        stories.add(Story.create(R.drawable.windmills, getString(R.string.story4_title)));
+        stories.add(Story.create(R.drawable.agriculture, getString(R.string.story5_title)));
+        stories.add(Story.create(R.drawable.reef, getString(R.string.story6_title)));
+        stories.add(Story.create(R.drawable.landscape, getString(R.string.story7_title)));
         return stories;
     }
 }

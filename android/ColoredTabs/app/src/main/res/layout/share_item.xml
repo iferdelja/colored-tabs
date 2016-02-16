@@ -30,11 +30,11 @@
     <TextView
         android:id="@+id/timestamp"
         style="@style/ShareItemTimestamp"
-        android:textStyle="normal"
         android:layout_alignParentBottom="true"
         android:layout_toLeftOf="@+id/image"
         android:layout_toRightOf="@id/author"
-        android:maxLines="1"/>
+        android:maxLines="1"
+        android:textStyle="normal"/>
 
     <com.ivanferdelja.coloredtabs.SpecialImageView
         android:id="@+id/image"

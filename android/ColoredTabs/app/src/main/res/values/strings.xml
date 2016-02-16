@@ -5,9 +5,13 @@
     <string name="tabB">Photos</string>
     <string name="tabC">Sharing</string>
 
-    <string name="story1_title">2015 Was Hottest Year in Historical Record, Scientists Say</string>
+    <string name="story1_title">2015 Was Hottest Year in Historical Record</string>
     <string name="story2_title">How To Get Five Planets Into a Single Photograph</string>
     <string name="story3_title">Deforestation Threatens Pygmies, Study Finds</string>
+    <string name="story4_title">China overtakes EU to become global wind power leader</string>
+    <string name="story5_title">Cheap and easy food? Think about the true cost</string>
+    <string name="story6_title">How satellite technology is helping to fight illegal fishing</string>
+    <string name="story7_title">Number of children not engaging with nature concerning</string>
 
     <string name="share1_text">Raphael Jones shared a photo with you: Ponderosa Oregon</string>
     <string name="share2_text">Dolores Smith shared a video with you: Pollination story</string>

@@ -16,11 +16,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.GridView;
-import android.widget.ListView;
 
 public class MainActivity extends AppCompatActivity {
 
-    ShareStreamAdapter shareStreamAdapter;
     ElevationScrollControl elevationScrollControl;
 
     @Override
@@ -76,20 +74,6 @@ public class MainActivity extends AppCompatActivity {
         });
         tabLayout.setTabTextColors(getColorStateList(R.color.tab_color));
 
-        shareStreamAdapter = new ShareStreamAdapter(getApplicationContext());
-        ShareStream stream = new ShareStream();
-        stream.shareItems.add(ShareItem.create(R.drawable.face1, getString(R.string.share1_text), R.drawable.nature9, "10m"));
-        stream.shareItems.add(ShareItem.create(R.drawable.face2, getString(R.string.share2_text), R.drawable.nature8, "10m"));
-        stream.shareItems.add(ShareItem.create(R.drawable.face3, getString(R.string.share3_text), R.drawable.nature5, "10m"));
-        stream.shareItems.add(ShareItem.create(R.drawable.face4, getString(R.string.share4_text), R.drawable.nature6, "10m"));
-        shareStreamAdapter.add(stream);
-
-        ShareStream stream3 = new ShareStream();
-        stream3.shareItems.add(ShareItem.create(R.drawable.face2, getString(R.string.share5_text), R.drawable.nature7, "40m"));
-        stream3.shareItems.add(ShareItem.create(R.drawable.face3, getString(R.string.share3_text), R.drawable.nature4, "45m"));
-        stream3.shareItems.add(ShareItem.create(R.drawable.face4, getString(R.string.share4_text), R.drawable.nature3, "1h"));
-        shareStreamAdapter.add(stream3);
-
         viewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
             public Fragment getItem(int position) {
@@ -104,8 +88,8 @@ public class MainActivity extends AppCompatActivity {
                         return photoFragment;
                     case 2:
                         ShareFragment shareFragment = new ShareFragment();
-                        shareFragment.setListAdapter(shareStreamAdapter);
-                        shareFragment.setEsc(elevationScrollControl);
+//                        shareFragment.setListAdapter(shareStreamAdapter);
+//                        shareFragment.setEsc(elevationScrollControl);
                         return shareFragment;
                     default:
                         return new Fragment();
@@ -224,14 +208,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public static class ShareFragment extends BaseListFragment {
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-            View view = inflater.inflate(R.layout.fragment_share, container, false);
-            updateElevationScrollControl((ListView) view);
-            return view;
-        }
-    }
 
     public class ElevationScrollControl {
         View view;
