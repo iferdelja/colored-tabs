@@ -19,7 +19,7 @@ import android.widget.GridView;
 
 public class MainActivity extends AppCompatActivity {
 
-    ElevationScrollControl elevationScrollControl;
+   // ElevationScrollControl elevationScrollControl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +36,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        elevationScrollControl = new ElevationScrollControl();
-        elevationScrollControl.setView(tabLayout);
+//        elevationScrollControl = new ElevationScrollControl();
+//        elevationScrollControl.setView(tabLayout);
 
         tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tabA)));
         tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tabB)));
@@ -52,12 +52,15 @@ public class MainActivity extends AppCompatActivity {
             public void onTabSelected(TabLayout.Tab tab) {
                 if (getString(R.string.tabA).equals(tab.getText())) {
                     viewPager.setCurrentItem(0);
+
                     fab.show();
                 } else if (getString(R.string.tabB).equals(tab.getText())) {
                     viewPager.setCurrentItem(1);
+
                     fab.hide();
                 } else if (getString(R.string.tabC).equals(tab.getText())) {
                     viewPager.setCurrentItem(2);
+
                     fab.hide();
                 }
             }
@@ -84,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
                         return storyFragment;
                     case 1:
                         PhotoFragment photoFragment = new PhotoFragment();
-                        photoFragment.setEsc(elevationScrollControl);
+                        //photoFragment.setEsc(elevationScrollControl);
                         return photoFragment;
                     case 2:
                         ShareFragment shareFragment = new ShareFragment();
@@ -104,8 +107,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         viewPager.addOnPageChangeListener(new PageChangeListener(tabLayout));
-
-        Log.d("Colored tabs", "Contrast: " + ColorUtils.calculateContrast(getColor(R.color.storyTitle), getColor(R.color.light_grey)));
     }
 
     private class PageChangeListener implements ViewPager.OnPageChangeListener {
@@ -123,20 +124,25 @@ public class MainActivity extends AppCompatActivity {
 
             int startColor;
             int endColor;
+            float elevation = 0;
 
             if (position == 0) {
                 startColor = getColor(R.color.colorA);
                 endColor = getColor(R.color.colorB);
             } else if (position == 2) {
                 startColor = endColor = getColor(R.color.colorC);
+                elevation = getResources().getDimensionPixelSize(R.dimen.tabbar_elevation);
             } else {
                 startColor = getColor(R.color.colorB);
                 endColor = getColor(R.color.colorC);
+                elevation = getResources().getDimensionPixelSize(R.dimen.tabbar_elevation) * positionOffset;
             }
 
+            Log.d("Colored tabs", "Position " + position + " Position offset: " + positionOffset + " Elev " + elevation);
             int color = (int) evaluator.evaluate(positionOffset, startColor, endColor);
             tabLayout.getRootView().setBackgroundColor(color);
             tabLayout.setBackgroundColor(color);
+            tabLayout.setElevation(elevation);
         }
 
         @Override
@@ -153,38 +159,38 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public static class BaseListFragment extends ListFragment {
-
-        ElevationScrollControl esc;
-
-        public void setEsc(ElevationScrollControl esc) {
-            this.esc = esc;
-        }
-
-        protected void updateElevationScrollControl(final AbsListView view) {
-            view.setOnScrollListener(new AbsListView.OnScrollListener() {
-                @Override
-                public void onScrollStateChanged(AbsListView absListView, int i) {
-                }
-
-                @Override
-                public void onScroll(AbsListView absListView, int i, int i1, int i2) {
-                    View first = view.getChildAt(0);
-                    if (first != null && esc != null) {
-                        esc.scrollingUpdate(first.getTop() < 0);
-                    }
-                }
-            });
-        }
-    }
-
+//    public static class BaseListFragment extends ListFragment {
+//
+//        ElevationScrollControl esc;
+//
+//        public void setEsc(ElevationScrollControl esc) {
+//            this.esc = esc;
+//        }
+//
+//        protected void updateElevationScrollControl(final AbsListView view) {
+//            view.setOnScrollListener(new AbsListView.OnScrollListener() {
+//                @Override
+//                public void onScrollStateChanged(AbsListView absListView, int i) {
+//                }
+//
+//                @Override
+//                public void onScroll(AbsListView absListView, int i, int i1, int i2) {
+//                    View first = view.getChildAt(0);
+//                    if (first != null && esc != null) {
+//                        esc.scrollingUpdate(first.getTop() < 0);
+//                    }
+//                }
+//            });
+//        }
+//    }
+//
 
     public static class PhotoFragment extends Fragment {
-        ElevationScrollControl esc;
+        //ElevationScrollControl esc;
 
-        public void setEsc(ElevationScrollControl esc) {
-            this.esc = esc;
-        }
+//        public void setEsc(ElevationScrollControl esc) {
+//            this.esc = esc;
+//        }
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -199,26 +205,26 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onScroll(AbsListView absListView, int i, int i1, int i2) {
                     View first = gridView.getChildAt(0);
-                    if (first != null && esc != null) {
-                        esc.scrollingUpdate(first.getTop() < 0);
-                    }
+//                    if (first != null && esc != null) {
+//                        esc.scrollingUpdate(first.getTop() < 0);
+//                    }
                 }
             });
             return view;
         }
     }
 
-
-    public class ElevationScrollControl {
-        View view;
-
-        public void setView(View view) {
-            this.view = view;
-        }
-
-        public void scrollingUpdate(boolean isScrolling) {
-            view.setElevation(isScrolling ? getResources().getDimensionPixelSize(R.dimen.elevation) : 0);
-        }
-    }
+//
+//    public class ElevationScrollControl {
+//        View view;
+//
+//        public void setView(View view) {
+//            this.view = view;
+//        }
+//
+//        public void scrollingUpdate(boolean isScrolling) {
+//            view.setElevation(isScrolling ? getResources().getDimensionPixelSize(R.dimen.elevation) : 0);
+//        }
+//    }
 
 }

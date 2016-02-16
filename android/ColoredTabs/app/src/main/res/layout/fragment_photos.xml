@@ -7,11 +7,8 @@
     android:horizontalSpacing="3dp"
     android:numColumns="3"
     android:orientation="vertical"
-    android:padding="8dp"
+    android:paddingLeft="8dp"
+    android:paddingRight="8dp"
     android:stretchMode="columnWidth"
-    android:verticalSpacing="3dp"
-
-    >
-
-
+    android:verticalSpacing="3dp">
 </GridView>
