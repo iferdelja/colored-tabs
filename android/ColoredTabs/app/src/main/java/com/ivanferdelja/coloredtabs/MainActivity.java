@@ -6,8 +6,6 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.ListFragment;
-import android.support.v4.graphics.ColorUtils;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -19,7 +17,7 @@ import android.widget.GridView;
 
 public class MainActivity extends AppCompatActivity {
 
-   // ElevationScrollControl elevationScrollControl;
+    // ElevationScrollControl elevationScrollControl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,6 +105,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
         viewPager.addOnPageChangeListener(new PageChangeListener(tabLayout));
+
+        viewPager.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION);
     }
 
     private class PageChangeListener implements ViewPager.OnPageChangeListener {
