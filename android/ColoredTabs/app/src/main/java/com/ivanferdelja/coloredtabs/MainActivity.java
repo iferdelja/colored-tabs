@@ -17,8 +17,6 @@ import android.widget.GridView;
 
 public class MainActivity extends AppCompatActivity {
 
-    // ElevationScrollControl elevationScrollControl;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,9 +31,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
             }
         });
-
-//        elevationScrollControl = new ElevationScrollControl();
-//        elevationScrollControl.setView(tabLayout);
 
         tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tabA)));
         tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.tabB)));
@@ -158,73 +153,5 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
-
-//    public static class BaseListFragment extends ListFragment {
-//
-//        ElevationScrollControl esc;
-//
-//        public void setEsc(ElevationScrollControl esc) {
-//            this.esc = esc;
-//        }
-//
-//        protected void updateElevationScrollControl(final AbsListView view) {
-//            view.setOnScrollListener(new AbsListView.OnScrollListener() {
-//                @Override
-//                public void onScrollStateChanged(AbsListView absListView, int i) {
-//                }
-//
-//                @Override
-//                public void onScroll(AbsListView absListView, int i, int i1, int i2) {
-//                    View first = view.getChildAt(0);
-//                    if (first != null && esc != null) {
-//                        esc.scrollingUpdate(first.getTop() < 0);
-//                    }
-//                }
-//            });
-//        }
-//    }
-//
-
-    public static class PhotoFragment extends Fragment {
-        //ElevationScrollControl esc;
-
-//        public void setEsc(ElevationScrollControl esc) {
-//            this.esc = esc;
-//        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-            final View view = inflater.inflate(R.layout.fragment_photos, container, false);
-            final GridView gridView = (GridView) view.findViewById(R.id.grid);
-            gridView.setAdapter(new ImageAdapter(getContext()));
-            gridView.setOnScrollListener(new AbsListView.OnScrollListener() {
-                @Override
-                public void onScrollStateChanged(AbsListView absListView, int i) {
-                }
-
-                @Override
-                public void onScroll(AbsListView absListView, int i, int i1, int i2) {
-                    View first = gridView.getChildAt(0);
-//                    if (first != null && esc != null) {
-//                        esc.scrollingUpdate(first.getTop() < 0);
-//                    }
-                }
-            });
-            return view;
-        }
-    }
-
-//
-//    public class ElevationScrollControl {
-//        View view;
-//
-//        public void setView(View view) {
-//            this.view = view;
-//        }
-//
-//        public void scrollingUpdate(boolean isScrolling) {
-//            view.setElevation(isScrolling ? getResources().getDimensionPixelSize(R.dimen.elevation) : 0);
-//        }
-//    }
 
 }

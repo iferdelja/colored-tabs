@@ -1,10 +1,19 @@
 package com.ivanferdelja.coloredtabs;
 
+import com.squareup.otto.Bus;
+
 public final class Application extends android.app.Application {
+
+    Bus bus;
+
     @Override
     public void onCreate() {
         super.onCreate();
 
-        FontsOverride.setDefaultFont(this, "sans-serif", "roboto-blackitalic.ttf");
+        bus = new Bus();
+    }
+
+    public Bus getBus() {
+        return bus;
     }
 }
