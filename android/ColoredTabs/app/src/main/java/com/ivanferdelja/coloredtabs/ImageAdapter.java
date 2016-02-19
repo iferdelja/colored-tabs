@@ -66,6 +66,7 @@ public class ImageAdapter extends BaseAdapter {
 
             RippleDrawable rippleDrawable = new RippleDrawable(ColorStateList.valueOf(
                     mContext.getColor(android.support.design.R.color.ripple_material_light)), null, null);
+
             imageView.setForeground(rippleDrawable);
         } else {
             imageView = (ForegroundImageView) convertView;
