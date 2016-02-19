@@ -8,16 +8,19 @@ import android.widget.RelativeLayout;
 
 public class InsetLayout extends RelativeLayout {
 
+    private boolean consumed = false;
+
     public InsetLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
     @Override
     public WindowInsets onApplyWindowInsets(WindowInsets insets) {
-        if (!insets.isConsumed()) {
+        if (!consumed) {
             setPadding(getPaddingLeft(), getPaddingTop() + insets.getSystemWindowInsetTop(),
                     getPaddingRight(), getPaddingBottom());
-            insets.consumeSystemWindowInsets();
+            insets = insets.consumeSystemWindowInsets().consumeStableInsets();
+            consumed = true;
         }
         return super.onApplyWindowInsets(insets);
     }

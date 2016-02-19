@@ -133,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
                 elevation = getResources().getDimensionPixelSize(R.dimen.tabbar_elevation) * positionOffset;
             }
 
-            Log.d("Colored tabs", "Position " + position + " Position offset: " + positionOffset + " Elev " + elevation);
+            //Log.d("Colored tabs", "Position " + position + " Position offset: " + positionOffset + " Elev " + elevation);
             int color = (int) evaluator.evaluate(positionOffset, startColor, endColor);
             tabLayout.getRootView().setBackgroundColor(color);
             tabLayout.setBackgroundColor(color);
