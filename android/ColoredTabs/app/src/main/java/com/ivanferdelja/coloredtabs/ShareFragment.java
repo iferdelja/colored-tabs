@@ -42,6 +42,13 @@ public class ShareFragment extends Fragment {
         items.add(ShareItem.create(R.drawable.face2, getString(R.string.share5_text), R.drawable.nature7, "40m"));
         items.add(ShareItem.create(R.drawable.face3, getString(R.string.share3_text), R.drawable.nature4, "45m"));
         items.add(ShareItem.create(R.drawable.face4, getString(R.string.share4_text), R.drawable.nature3, "1h"));
+        items.add(ShareItem.create(R.drawable.face1, getString(R.string.share1_text), R.drawable.nature9, "10m"));
+        items.add(ShareItem.create(R.drawable.face2, getString(R.string.share2_text), R.drawable.nature8, "10m"));
+        items.add(ShareItem.create(R.drawable.face3, getString(R.string.share3_text), R.drawable.nature5, "10m"));
+        items.add(ShareItem.create(R.drawable.face4, getString(R.string.share4_text), R.drawable.nature6, "10m"));
+        items.add(ShareItem.create(R.drawable.face2, getString(R.string.share5_text), R.drawable.nature7, "40m"));
+        items.add(ShareItem.create(R.drawable.face3, getString(R.string.share3_text), R.drawable.nature4, "45m"));
+        items.add(ShareItem.create(R.drawable.face4, getString(R.string.share4_text), R.drawable.nature3, "1h"));
         return items;
     }
 }

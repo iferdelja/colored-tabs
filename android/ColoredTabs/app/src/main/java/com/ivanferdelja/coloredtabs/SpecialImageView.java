@@ -15,6 +15,7 @@ import android.widget.ImageView;
 public class SpecialImageView extends ImageView {
 
     public enum Mode {
+        NONE,
         CIRCLE,
         ROUNDED_CORNERS
     }

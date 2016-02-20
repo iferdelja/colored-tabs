@@ -1,5 +1,6 @@
 package com.ivanferdelja.coloredtabs;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,14 +36,18 @@ public class ShareAdapter extends RecyclerView.Adapter<ShareAdapter.ViewHolder> 
     public void onBindViewHolder(ViewHolder holder, int position) {
         ShareItem shareItem = shareItems.get(position);
 
+        Context context = holder.view.getContext();
+
         ImageView authorImage = (ImageView) holder.view.findViewById(R.id.author);
-        authorImage.setImageResource(shareItem.authorImageResource);
+        ((Application) context.getApplicationContext()).getBitmapManager().loadBitmap(
+                context, shareItem.authorImageResource, authorImage);
 
         TextView title = (TextView) holder.view.findViewById(R.id.title);
         title.setText(shareItem.title);
 
         ImageView imageView = (ImageView) holder.view.findViewById(R.id.image);
-        imageView.setImageResource(shareItem.imageResource);
+        ((Application) context.getApplicationContext()).getBitmapManager().loadBitmap(
+                context, shareItem.imageResource, imageView);
 
         TextView timestamp = (TextView) holder.view.findViewById(R.id.timestamp);
         timestamp.setText(shareItem.timestamp);

@@ -70,7 +70,9 @@ public class MainActivity extends AppCompatActivity {
         });
         tabLayout.setTabTextColors(getColorStateList(R.color.tab_color));
 
+        viewPager.setOffscreenPageLimit(3);
         viewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
+
             @Override
             public Fragment getItem(int position) {
                 switch (position) {

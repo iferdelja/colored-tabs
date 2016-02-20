@@ -12,7 +12,7 @@ public class PhotoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_photos, container, false);
         final GridView gridView = (GridView) view.findViewById(R.id.grid);
-        gridView.setAdapter(new ImageAdapter(getContext()));
+        gridView.setAdapter(new PhotoAdapter(getContext()));
         return view;
     }
 }

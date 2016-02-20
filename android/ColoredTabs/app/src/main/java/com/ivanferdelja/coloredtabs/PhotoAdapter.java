@@ -9,12 +9,12 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
-public class ImageAdapter extends BaseAdapter {
+public class PhotoAdapter extends BaseAdapter {
 
-    private Context mContext;
+    private Context context;
 
-    public ImageAdapter(Context c) {
-        mContext = c;
+    public PhotoAdapter(Context c) {
+        context = c;
     }
 
     public int getCount() {
@@ -32,7 +32,7 @@ public class ImageAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ForegroundImageView imageView;
         if (convertView == null) {
-            imageView = new ForegroundImageView(mContext);
+            imageView = new ForegroundImageView(context);
             imageView.setAdjustViewBounds(true);
             imageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
             int imageResource = R.drawable.nature3;
@@ -62,12 +62,13 @@ public class ImageAdapter extends BaseAdapter {
                     imageResource = R.drawable.nature9;
                     break;
             }
-            imageView.setImageResource(imageResource);
-
             RippleDrawable rippleDrawable = new RippleDrawable(ColorStateList.valueOf(
-                    mContext.getColor(android.support.design.R.color.ripple_material_light)), null, null);
-
+                    context.getColor(android.support.design.R.color.ripple_material_light)), null, null);
             imageView.setForeground(rippleDrawable);
+
+            ((Application) context.getApplicationContext()).getBitmapManager().loadBitmap(
+                    context, imageResource, imageView);
+
         } else {
             imageView = (ForegroundImageView) convertView;
         }
