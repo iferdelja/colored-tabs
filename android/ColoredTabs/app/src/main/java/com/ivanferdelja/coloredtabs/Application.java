@@ -1,19 +1,17 @@
 package com.ivanferdelja.coloredtabs;
 
-import com.squareup.otto.Bus;
-
 public final class Application extends android.app.Application {
 
-    Bus bus;
+    BitmapManager bitmapManager;
 
     @Override
     public void onCreate() {
         super.onCreate();
 
-        bus = new Bus();
+        bitmapManager = new BitmapManager();
     }
 
-    public Bus getBus() {
-        return bus;
+    public BitmapManager getBitmapManager() {
+        return bitmapManager;
     }
 }

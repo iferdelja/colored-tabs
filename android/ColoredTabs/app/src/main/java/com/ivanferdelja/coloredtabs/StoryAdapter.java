@@ -1,5 +1,6 @@
 package com.ivanferdelja.coloredtabs;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -43,7 +44,11 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.ViewHolder> 
         };
         ImageView storyImage = (ImageView) holder.view.findViewById(R.id.story_image);
         storyImage.setOnClickListener(uselessClickListener);
-        storyImage.setImageResource(story.imageResource);
+
+        Context context = holder.view.getContext();
+        ((Application) context.getApplicationContext()).getBitmapManager().loadBitmap(
+                context, story.imageResource, storyImage);
+
         TextView headline = (TextView) holder.view.findViewById(R.id.headline);
         headline.setText(story.headline);
         TextView title = (TextView) holder.view.findViewById(R.id.title);
@@ -61,4 +66,6 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.ViewHolder> 
         ViewHolder viewHolder = new ViewHolder(storyView);
         return viewHolder;
     }
+
+
 }
