@@ -4,6 +4,9 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.TransitionDrawable;
 import android.os.AsyncTask;
 import android.widget.ImageView;
 
@@ -27,6 +30,11 @@ class BitmapWorkerTask extends AsyncTask<Integer, Void, Bitmap> {
         Bitmap bitmap = decodeSampledBitmapFromResource(context.getResources(), data, -1, -1);
         ((Application)context.getApplicationContext()).getBitmapManager()
                 .addBitmapToMemoryCache(String.valueOf(params[0]), bitmap);
+//        try {
+//            Thread.sleep(500);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
         return bitmap;
     }
 
@@ -36,7 +44,13 @@ class BitmapWorkerTask extends AsyncTask<Integer, Void, Bitmap> {
         if (imageViewReference != null && bitmap != null) {
             final ImageView imageView = imageViewReference.get();
             if (imageView != null) {
-                imageView.setImageBitmap(bitmap);
+                TransitionDrawable transitionDrawable = new TransitionDrawable(
+                        new Drawable[]{context.getResources().getDrawable(R.drawable.placeholder3),
+                                new BitmapDrawable(context.getResources(), bitmap)});
+                imageView.setImageDrawable(transitionDrawable);
+                transitionDrawable.setCrossFadeEnabled(true);
+                transitionDrawable.startTransition(200);
+                //imageView.setImageBitmap(bitmap);
             }
         }
     }

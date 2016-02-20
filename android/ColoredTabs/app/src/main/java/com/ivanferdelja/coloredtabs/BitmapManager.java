@@ -47,7 +47,7 @@ public class BitmapManager {
                 final BitmapWorkerTask task = new BitmapWorkerTask(context, imageView);
                 final AsyncDrawable asyncDrawable =
                         new AsyncDrawable(context.getResources(),
-                                ((BitmapDrawable)context.getResources().getDrawable(R.drawable.ic_add)).getBitmap(), task);
+                                ((BitmapDrawable)context.getResources().getDrawable(R.drawable.placeholder3)).getBitmap(), task);
                 imageView.setImageDrawable(asyncDrawable);
                 task.execute(resId);
             }

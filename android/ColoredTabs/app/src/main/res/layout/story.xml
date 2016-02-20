@@ -29,10 +29,10 @@
         <com.ivanferdelja.coloredtabs.ForegroundImageView
             android:id="@+id/story_image"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="220dp"
             android:adjustViewBounds="true"
             android:layout_below="@id/title"
-            android:scaleType="center"
+            android:scaleType="centerCrop"
             android:src="@drawable/story1"
             android:foreground="@drawable/ripple"/>
 
