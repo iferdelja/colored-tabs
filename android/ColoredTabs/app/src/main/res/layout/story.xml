@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     card_view:cardBackgroundColor="@color/light_grey"
     card_view:cardCornerRadius="4dp"
-    card_view:cardElevation="2dp"
+    card_view:cardElevation="6dp"
     card_view:cardMaxElevation="8dp"
     android:layout_marginLeft="8dp"
     android:layout_marginRight="8dp"
