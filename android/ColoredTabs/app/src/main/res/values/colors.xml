@@ -13,5 +13,6 @@
     <color name="fab_color_2">#9c27b0</color>
     <color name="fab_color_2_muted">#a56ab0</color>
     <color name="black_30percent">#4D000000</color>
+    <color name="black_20percent">#33000000</color>
     <color name="card_bg_light">#FFFAFAFA</color>
 </resources>

@@ -2,10 +2,13 @@ package com.ivanferdelja.coloredtabs;
 
 import android.animation.ArgbEvaluator;
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -20,6 +23,12 @@ public class MainActivity extends AppCompatActivity {
         final TabLayout tabLayout = (TabLayout) findViewById(R.id.my_tabbar);
         final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
         final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinator_layout);
+        final AppBarLayout appBarLayout = (AppBarLayout)findViewById(R.id.appbar_layout);
+
+        appBarLayout.setBackgroundDrawable(null);
+        //appBarLayout.setElevation(0);
+        //ViewCompat.setElevation(appBarLayout, 0);
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.setSelectedTabIndicatorHeight(0);
 
         tabLayout.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-        getWindow().setStatusBarColor(getColor(android.R.color.transparent));
+        getWindow().setStatusBarColor(getColor(R.color.black_20percent));
 
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -45,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
                 } else if (getString(R.string.tabC).equals(tab.getText())) {
                     viewPager.setCurrentItem(2);
                 }
+
             }
 
             @Override
@@ -130,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
             int color = (int) evaluator.evaluate(positionOffset, startColor, endColor);
             tabLayout.getRootView().setBackgroundColor(color);
             tabLayout.setBackgroundColor(color);
-            tabLayout.setElevation(elevation);
+            //tabLayout.setElevation(elevation);
 
             if (position == 0 && positionOffset < 0.1) {
                 floatingActionButton.show();

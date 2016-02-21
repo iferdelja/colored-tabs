@@ -17,7 +17,7 @@ public class InsetLayout extends RelativeLayout {
     @Override
     public WindowInsets onApplyWindowInsets(WindowInsets insets) {
         if (!consumed) {
-            setPadding(getPaddingLeft(), getPaddingTop() + insets.getSystemWindowInsetTop(),
+            setPadding(getPaddingLeft(), getPaddingTop(),// + insets.getSystemWindowInsetTop(),
                     getPaddingRight(), getPaddingBottom());
             insets = insets.consumeSystemWindowInsets().consumeStableInsets();
             consumed = true;
