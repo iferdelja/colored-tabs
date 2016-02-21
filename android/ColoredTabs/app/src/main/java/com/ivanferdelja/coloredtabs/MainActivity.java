@@ -40,16 +40,10 @@ public class MainActivity extends AppCompatActivity {
             public void onTabSelected(TabLayout.Tab tab) {
                 if (getString(R.string.tabA).equals(tab.getText())) {
                     viewPager.setCurrentItem(0);
-
-                    fab.show();
                 } else if (getString(R.string.tabB).equals(tab.getText())) {
                     viewPager.setCurrentItem(1);
-
-                    fab.hide();
                 } else if (getString(R.string.tabC).equals(tab.getText())) {
                     viewPager.setCurrentItem(2);
-
-                    fab.hide();
                 }
             }
 
@@ -96,18 +90,20 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-        viewPager.addOnPageChangeListener(new PageChangeListener(tabLayout));
+        viewPager.addOnPageChangeListener(new PageChangeListener(tabLayout, fab));
 
         viewPager.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION);
     }
 
     private class PageChangeListener implements ViewPager.OnPageChangeListener {
 
-        private TabLayout tabLayout;
+        TabLayout tabLayout;
+        FloatingActionButton floatingActionButton;
         ArgbEvaluator evaluator;
 
-        public PageChangeListener(TabLayout tabLayout) {
+        public PageChangeListener(TabLayout tabLayout, FloatingActionButton floatingActionButton) {
             this.tabLayout = tabLayout;
+            this.floatingActionButton = floatingActionButton;
             evaluator = new ArgbEvaluator();
         }
 
@@ -135,6 +131,12 @@ public class MainActivity extends AppCompatActivity {
             tabLayout.getRootView().setBackgroundColor(color);
             tabLayout.setBackgroundColor(color);
             tabLayout.setElevation(elevation);
+
+            if (position == 0 && positionOffset < 0.1) {
+                floatingActionButton.show();
+            } else {
+                floatingActionButton.hide();
+            }
         }
 
         @Override
