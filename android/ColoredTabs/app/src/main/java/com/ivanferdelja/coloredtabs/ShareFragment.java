@@ -2,7 +2,6 @@ package com.ivanferdelja.coloredtabs;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,18 +13,21 @@ import java.util.List;
 public class ShareFragment extends Fragment {
 
     RecyclerView recyclerView;
-    RecyclerView.LayoutManager layoutManager;
+    LinearLayoutManager layoutManager;
     ShareAdapter shareAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_share, container, false);
         recyclerView = (RecyclerView) view.findViewById(R.id.share_recycler_view);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL_LIST));
+        recyclerView.setHasFixedSize(false);
 
-        layoutManager = new LinearLayoutManager(getContext());
+        // Problem with LinearLayoutManager - does not wrap its content
+        // https://code.google.com/p/android/issues/detail?id=74772
+        layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+        layoutManager.setChildSize(getResources().getDimensionPixelSize(R.dimen.share_item_height));
         recyclerView.setLayoutManager(layoutManager);
+        recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL_LIST));
 
         shareAdapter = new ShareAdapter(buildDummyShareItems());
         recyclerView.setAdapter(shareAdapter);

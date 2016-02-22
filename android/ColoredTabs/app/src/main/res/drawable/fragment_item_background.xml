@@ -1,3 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <inset xmlns:android="http://schemas.android.com/apk/res/android" android:drawable="@drawable/fragment_item_inner_background"
-    android:inset="@dimen/fragment_item_inset"/>
+    android:insetTop="@dimen/fragment_item_inset"
+       android:insetRight="@dimen/fragment_item_inset"
+       android:insetLeft="@dimen/fragment_item_inset"
+       android:insetBottom="@dimen/fragment_bottom_padding"/>

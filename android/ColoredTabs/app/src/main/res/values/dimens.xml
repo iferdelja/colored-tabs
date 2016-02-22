@@ -6,7 +6,7 @@
     <dimen name="share_item_author_image_dim">35dp</dimen>
     <dimen name="share_item_image_dim">80dp</dimen>
     <dimen name="share_stream_divider_height">1dp</dimen>
-    <dimen name="fragment_item_inset">10dp</dimen>
+    <dimen name="fragment_item_inset">8dp</dimen>
     <dimen name="tabbar_elevation">8dp</dimen>
     <dimen name="fragment_padding">8dp</dimen>
     <dimen name="fragment_bottom_padding">56dp</dimen> <!-- Navbar height 48dp + 8dp for content -->
