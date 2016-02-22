@@ -35,6 +35,11 @@
             android:src="@drawable/story1"
             android:foreground="@drawable/ripple"/>
 
+        <View android:layout_width="match_parent"
+              android:layout_height="220dp"
+              android:layout_below="@id/title"
+            android:background="@drawable/black_gradient"/>
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
