@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-        viewPager.addOnPageChangeListener(new PageChangeListener(tabLayout, fab));
+        viewPager.addOnPageChangeListener(new PageChangeListener(tabLayout, fab, appBarLayout, coordinatorLayout));
 
         viewPager.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION);
     }
@@ -110,10 +110,15 @@ public class MainActivity extends AppCompatActivity {
         TabLayout tabLayout;
         FloatingActionButton floatingActionButton;
         ArgbEvaluator evaluator;
+        AppBarLayout appBarLayout;
+        CoordinatorLayout coordinatorLayout;
 
-        public PageChangeListener(TabLayout tabLayout, FloatingActionButton floatingActionButton) {
+        public PageChangeListener(TabLayout tabLayout, FloatingActionButton floatingActionButton,
+                                  AppBarLayout appBarLayout, CoordinatorLayout coordinatorLayout) {
             this.tabLayout = tabLayout;
             this.floatingActionButton = floatingActionButton;
+            this.appBarLayout = appBarLayout;
+            this.coordinatorLayout = coordinatorLayout;
             evaluator = new ArgbEvaluator();
         }
 
@@ -155,6 +160,10 @@ public class MainActivity extends AppCompatActivity {
             if (tab != null) {
                 tab.select();
             }
+
+            CoordinatorLayout.LayoutParams params = (CoordinatorLayout.LayoutParams) appBarLayout.getLayoutParams();
+            AppBarLayout.Behavior behavior = (AppBarLayout.Behavior) params.getBehavior();
+            behavior.onNestedFling(coordinatorLayout, appBarLayout, null, 0, -2000, true);
         }
 
         @Override
