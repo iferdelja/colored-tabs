@@ -7,6 +7,7 @@
     android:horizontalSpacing="3dp"
     android:numColumns="3"
     android:orientation="vertical"
+    android:paddingTop="@dimen/fragment_padding"
     android:paddingLeft="@dimen/fragment_padding"
     android:paddingRight="@dimen/fragment_padding"
     android:paddingBottom="@dimen/fragment_bottom_padding"
