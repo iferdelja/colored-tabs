@@ -1,6 +1,8 @@
 package com.ivanferdelja.coloredtabs;
 
 import android.animation.ArgbEvaluator;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
@@ -8,12 +10,16 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 
+import java.io.IOException;
+
 public class MainActivity extends AppCompatActivity {
+
+    MediaPlayer mediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
         final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinator_layout);
-        final AppBarLayout appBarLayout = (AppBarLayout)findViewById(R.id.appbar_layout);
+        final AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.appbar_layout);
 
         appBarLayout.setBackgroundDrawable(null);
         //appBarLayout.setElevation(0);
