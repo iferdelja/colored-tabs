@@ -106,6 +106,8 @@ public class StoryFragment extends Fragment implements StoryAdapter.OnSurfaceAva
     @Override
     public void onSurfaceAvailable(Surface surface) {
         this.surface = surface;
-        mediaPlayer.setSurface(this.surface);
+        if (mediaPlayer != null) {
+            mediaPlayer.setSurface(this.surface);
+        }
     }
 }
