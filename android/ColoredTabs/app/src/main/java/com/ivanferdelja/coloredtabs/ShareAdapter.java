@@ -35,27 +35,37 @@ public class ShareAdapter extends RecyclerView.Adapter<ShareAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         ShareItem shareItem = shareItems.get(position);
-
+        View.OnClickListener uselessClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            }
+        };
         Context context = holder.view.getContext();
 
-        ImageView authorImage = (ImageView) holder.view.findViewById(R.id.author);
+        ImageView authorImage = (ImageView) holder.view.findViewById(R.id.share_author);
         ((Application) context.getApplicationContext()).getBitmapManager().loadBitmap(
                 context, shareItem.authorImageResource, authorImage);
 
-        TextView title = (TextView) holder.view.findViewById(R.id.title);
+        TextView title = (TextView) holder.view.findViewById(R.id.share_title);
         title.setText(shareItem.title);
 
         ImageView imageView = (ImageView) holder.view.findViewById(R.id.image);
         ((Application) context.getApplicationContext()).getBitmapManager().loadBitmap(
                 context, shareItem.imageResource, imageView);
+        imageView.setOnClickListener(uselessClickListener);
 
-        TextView timestamp = (TextView) holder.view.findViewById(R.id.timestamp);
-        timestamp.setText(shareItem.timestamp);
+//        TextView timestamp = (TextView) holder.view.findViewById(R.id.timestamp);
+//        timestamp.setText(shareItem.timestamp);
+
+        TextView commentAction = (TextView) holder.view.findViewById(R.id.comment);
+        commentAction.setOnClickListener(uselessClickListener);
+        TextView reactAction = (TextView) holder.view.findViewById(R.id.react);
+        reactAction.setOnClickListener(uselessClickListener);
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.share_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.share_item2, parent, false);
         ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
     }

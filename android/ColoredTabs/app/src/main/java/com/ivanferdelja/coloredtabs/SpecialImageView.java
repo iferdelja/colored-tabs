@@ -45,6 +45,11 @@ public class SpecialImageView extends ImageView {
     }
 
     private void init(AttributeSet attributeSet) {
+
+        if (isInEditMode()) {
+            return;
+        }
+
         if (attributeSet != null) {
             TypedArray ta = getContext().obtainStyledAttributes(attributeSet, R.styleable.SpecialImageView);
             int value = ta.getInteger(R.styleable.SpecialImageView_mode, -1);
@@ -52,10 +57,10 @@ public class SpecialImageView extends ImageView {
                 mode = Mode.ROUNDED_CORNERS;
             }
         }
-
         path = new Path();
         dstInPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         dstInPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
+
     }
 
     @Override
