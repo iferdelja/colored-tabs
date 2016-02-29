@@ -72,9 +72,10 @@
         <item name="android:textSize">13dp</item>
         <item name="android:textColor">@color/shareTitle</item>
         <item name="android:fontFamily">sans-serif-medium</item>
-        <item name="android:gravity">top|center_horizontal</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textAlignment">center</item>
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_height">@dimen/share_item_author_image_dim</item>
         <item name="android:layout_marginRight">8dp</item>
     </style>
 
