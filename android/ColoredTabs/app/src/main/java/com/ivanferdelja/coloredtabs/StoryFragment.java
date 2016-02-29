@@ -108,6 +108,7 @@ public class StoryFragment extends Fragment implements StoryAdapter.OnSurfaceAva
         this.surface = surface;
         if (mediaPlayer != null) {
             mediaPlayer.setSurface(this.surface);
+
         }
     }
 }

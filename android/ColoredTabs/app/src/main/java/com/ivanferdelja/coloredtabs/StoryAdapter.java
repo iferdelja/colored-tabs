@@ -1,12 +1,14 @@
 package com.ivanferdelja.coloredtabs;
 
 import android.content.Context;
+import android.graphics.SurfaceTexture;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -27,7 +29,7 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.ViewHolder> 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public View view;
         public ImageView storyImageView;
-        public SurfaceView storyVideo;
+        public TextureView storyVideo;
         public TextView headline;
         public String id;
 
@@ -35,7 +37,7 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.ViewHolder> 
             super(storyView);
             this.view = storyView;
             storyImageView = (ImageView) storyView.findViewById(R.id.story_image);
-            storyVideo = (SurfaceView) storyView.findViewById(R.id.story_video);
+            storyVideo = (TextureView) storyView.findViewById(R.id.story_video);
             headline = (TextView) storyView.findViewById(R.id.headline);
             this.id = UUID.randomUUID().toString().substring(0,3);
         }
@@ -82,28 +84,56 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.ViewHolder> 
         if (story.isVideo) {
             holder.storyImageView.setVisibility(View.GONE);
             holder.storyVideo.setVisibility(View.VISIBLE);
-            holder.storyVideo.getHolder().addCallback(new SurfaceHolder.Callback() {
+            holder.storyVideo.setSurfaceTextureListener(new TextureView.SurfaceTextureListener() {
                 @Override
-                public void surfaceCreated(SurfaceHolder surfaceHolder) {
+                public void onSurfaceTextureAvailable(SurfaceTexture surfaceTexture, int i, int i1) {
                     Log.d("coloredTabs", "surfaceCreated " + holder.id);
                     if (listener != null) {
-                        listener.onSurfaceAvailable(surfaceHolder.getSurface());
+                        listener.onSurfaceAvailable(new Surface(surfaceTexture));
                     }
                 }
 
                 @Override
-                public void surfaceChanged(SurfaceHolder surfaceHolder, int i, int i1, int i2) {
+                public void onSurfaceTextureSizeChanged(SurfaceTexture surfaceTexture, int i, int i1) {
 
                 }
 
                 @Override
-                public void surfaceDestroyed(SurfaceHolder surfaceHolder) {
+                public boolean onSurfaceTextureDestroyed(SurfaceTexture surfaceTexture) {
                     Log.d("coloredTabs", "surfaceDestroyed " + holder.id);
                     if (listener != null) {
-                        listener.onSurfaceAvailable(surfaceHolder.getSurface());
+                        listener.onSurfaceAvailable(null);
                     }
+                    return false;
+                }
+
+                @Override
+                public void onSurfaceTextureUpdated(SurfaceTexture surfaceTexture) {
+
                 }
             });
+//            holder.storyVideo.getHolder().addCallback(new SurfaceHolder.Callback() {
+//                @Override
+//                public void surfaceCreated(SurfaceHolder surfaceHolder) {
+//                    Log.d("coloredTabs", "surfaceCreated " + holder.id);
+//                    if (listener != null) {
+//                        listener.onSurfaceAvailable(surfaceHolder.getSurface());
+//                    }
+//                }
+//
+//                @Override
+//                public void surfaceChanged(SurfaceHolder surfaceHolder, int i, int i1, int i2) {
+//
+//                }
+//
+//                @Override
+//                public void surfaceDestroyed(SurfaceHolder surfaceHolder) {
+//                    Log.d("coloredTabs", "surfaceDestroyed " + holder.id);
+//                    if (listener != null) {
+//                        listener.onSurfaceAvailable(surfaceHolder.getSurface());
+//                    }
+//                }
+//            });
         } else {
             holder.storyImageView.setVisibility(View.VISIBLE);
             holder.storyVideo.setVisibility(View.GONE);

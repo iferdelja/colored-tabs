@@ -25,12 +25,13 @@
             android:text="Suggested story"
             android:visibility="gone"/>
 
-        <SurfaceView
+        <TextureView
             android:id="@+id/story_video"
             android:layout_width="match_parent"
             android:layout_height="220dp"
             android:layout_below="@id/title"
-            android:visibility="gone"/>
+            android:visibility="gone"
+            />
 
         <com.ivanferdelja.coloredtabs.ForegroundImageView
             android:id="@+id/story_image"
